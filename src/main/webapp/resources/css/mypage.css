@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+.recode_open{
+	float:left;
+}
+.recode_order_time{
+	float:left;
+}
+
+.clear{
+	clear:both;
+
+}
+.recode{
+	background-color:white;
+	margin-bottom:10px;
+
+}
+
+.recode_header{
+	padding:10px;
+}
+
+.recode_open{
+	padding:0 15px;
+	width:4%;
+	height:35px;
+	
+}
+.recode_open a{
+	
+}
+
+.recode_content{
+	box-shadow:0px 12px 10px -10px #ddd inset;
+}
+
+.recode_order_time{
+	font-size:20px;
+	padding:0 15px;
+}
+.blind{
+	background-color:red;
+	color:white;
+	height: 100%;
+	width:100%;
+	text-align: center;
+	vertical-align: middle;
+	cursor:pointer;
+	
+	
+}
+.blind i{
+	margin-top:3px;
+
+}
+
+.recode_detail{
+	float:left;
+	width: 20%;
+	padding:20px;
+	font-size: 20px;
+}
+.recode_items{
+	float:left;
+	width: 40%;
+}
+.recode_items_sum{
+	width:28%;
+	float:left;
+	padding:40px 15px;
+}
+
+.recode_items_sum p{
+	text-align:right;
+	margin-top: 240px;
+}
+.recode_detail_content{
+	margin:15px;
+	
+
+}
+.recode_detail_content .content{
+	font-size: 1.125rem;
+    color: #999;
+    font-weight: 400;
+	
+}
+.recode_detail_content .content p{
+	color:#3d3d3d;
+	font-size: 1.0625rem;
+}
+
+.recode_item_amount{
+	float:left;
+	width: 9%;
+	font-size: 25px;
+}
+
+.recode_item_number{
+	float:left;
+	width: 20%;
+	
+
+}
+.recode_item_number img{
+	max-width: 100%;
+}
+.recode_item_name{
+	float:left;
+	width: 30%;
+	font-size: 1.125rem;
+
+}
+.recode_items{
+	
+	border-right:1px solid #ddd;
+	border-left:1px solid #ddd;
+
+	min-height: 305px;
+	padding:20px 15px;
+}
+.recode_item{
+	border-bottom:1px solid #ddd;
+	padding:20px 15px;
+}
+.recode_item_content{
+	
+
+}
+.recode_items_sum{
+	font-size: 25px;
+	color:#000;
+}
+
+.recode_items_sum p{
+	font-size:30px;
+	color:#44900c;
+}
+
+.close{
+	display: none;
+   
+
+}
+
+.open{
+	display: block;
+   
+}
+
+.content_mypage{
+	background-color:white;
+	border:1px solid #dddddd;
+}
+.recode_one{
+	padding:10px;
+	margin:2px;
+	
+	
+}
+
+.recode_one td{
+	padding:10px 20px;
+	border-bottom:1px solid #dddddd;
+	
+}
+.recode_one td p{
+	text-align: center;
+	
+} 
+
+.main_mypage table{
+	width:100%;
+	border-collapse: collapse;
+	font-size: 20px;
+}
+
+.changeform{
+	padding:25px 20px;
+	
+	
+}
+
+.changeform p{
+	font-size: 1rem;
+	margin-bottom:5px;
+	line-height:1.4;
+	
+}
+.changeform input{
+	margin-left:12px;
+	width: 92%;
+	height:24px;
+    padding: 10px 16px;
+	border-radius: 4px;
+    font-size: .875rem;
+    outline: 0;
+	
+}
+.changeform button{
+	margin-left:12px;
+	margin-top:36px;
+	
+	background-color:#ec4c34;
+	padding:10px 16px;
+	border:1px solid #ec4c34;
+	border-radius: 4px;
+	color:white;
+	font-size: 1.5rem;
+}
+

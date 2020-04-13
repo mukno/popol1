@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.MenuMapper">
+
+
+
+	<select id="item_selectAll" resultType="com.spring.domain.ItemVO">
+		select *
+	     from item_list
+		 where item_num BETWEEN #{start_Num} and #{end_Num}
+	</select>
+
+	<select id="item_selectOne" resultType="com.spring.domain.ItemVO">
+		select *
+		 from item_list 
+		 where item_num = #{num}
+	</select>
+	
+	<insert id="add_shop">
+		insert
+		 into shopDB
+		 values(#{userId},#{item_number},#{item_amount},#{item_name},#{item_price},#{item_turn},#{order_count})
+	</insert>
+	
+	<delete id="deleteAll_shop">
+		delete
+		 from shopDB
+		 where userId = #{userId}
+	</delete>
+	
+	<select id="selectAll_shop" resultType="com.spring.domain.ShopVO">
+		select *
+		 from shopDB
+		 where userId = #{userId}
+	</select>
+	
+	<delete id="delete_shop">
+		delete
+		 from shopDB
+		 where userId = #{userId} and item_turn = #{item_turn}
+	</delete>
+
+	<select id="select_item_trun" resultType="int">
+		select max(item_turn)
+		 from shopDB
+		 where userId=#{userId}
+	</select>
+	
+	<select id="select_order_recode" resultType="com.spring.domain.ShopVO">
+		select *
+		 from order_recode
+		 where userId = #{userId}
+	</select>
+	
+	<select id="select_order_recode_detail" resultType="com.spring.domain.OrderRecodeVO">
+		select *
+		 from order_recode_detail
+		 where userId = #{userId}
+		 order by order_count desc
+	</select>
+
+	<select id="select_order_count" resultType="int">
+		select max(order_count)
+		 from order_recode
+		 where userId=#{userId}
+	</select>
+	
+	<select id="select_shop_order_count" resultType="int">
+		select max(order_count)
+		 from shopDB
+		 where userId=#{userId}
+	</select>
+	
+	<insert id="copy_order_recode">
+		insert
+		 into order_recode
+		 select *
+		  from shopDB
+		  where userId=#{userId}
+		
+	</insert>
+	
+	<insert id="add_order_recode_detail">
+		insert
+		 into order_recode_detail
+		 values(#{userId},#{order_count},#{order_time},#{deliver_time},#{deliver_address})
+		 
+		
+	</insert>
+
+	<select id="select_mypage_recode" resultType="com.spring.domain.ShopVO">
+		select *
+		 from order_recode
+		 where userId=#{userId} and order_count=#{order_count}
+	</select>
+
+</mapper>

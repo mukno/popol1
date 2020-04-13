@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.pay{
+	width:100%;
+	height:1100px;
+	z-index:1;
+	background-color:#ffffff8c;
+	position:fixed;
+	
+	display:none;
+	-webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+   
+    transition: opacity 400ms ease-in;
+   
+	
+}
+
+.pay .pay_modal{
+	margin:300px 710px;
+	width:680px;
+	height:300px;
+	background-color:#fbfad1;
+	border:1px solid #a0a09c;
+	
+	
+}
+
+.pay .pay_modal .pay_modal_content{
+	
+	padding:80px 80px 44px 80px;
+	text-align: center;
+	
+	
+	
+}
+.pay .pay_modal .pay_modal_content p{
+	font-size: 40px;
+	
+	
+	}
+
+.pay .pay_modal .pay_modal_content button{
+	margin-top:70px;
+	padding: 10px 16px;
+	background-color:#d21920;
+	cursor:pointer;
+	border:1px solid #bb161d;
+	width: 50%;
+	color:white;
+	border-radius: 4px;
+	font-size: 1.5rem;
+
+	}

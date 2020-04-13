@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include/footer.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include/header.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include/main_menu.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include/side_menu.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include/sign.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/menu/menu_dessert.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/menu/menu_drink.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/menu/menu_hamburger.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/menu/menu_recommend.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/menu/menu_snack.jsp=UTF-8
