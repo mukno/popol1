@@ -207,9 +207,8 @@ padding-right: 313px;
 }
 .login_wrap{
 	background-color:rgba(255,255,255,.7);
-	display:inline-block;
-	height:309px;
-	width:300px;
+	display:block;
+
 	position:absolute;
 	right:15px;
 	top:15px;
@@ -237,6 +236,17 @@ padding-right: 313px;
 	padding:15px;
 
 }
+
+.login_body .result{
+	
+	margin:5px 0;
+	font-size: 12px;
+	color:red;
+	
+
+	}
+	
+	
 
 .login_body .login_box{
 	border-color: #ccc;

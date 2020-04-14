@@ -126,3 +126,24 @@ var $slideWrap=$(".slide_wrap"),
 		
 	}
 	
+	function sign_go(){
+		
+		var form_data=$("#sign_form").serialize();
+		
+		$.ajax({
+			url:"/sign_login",
+			data:form_data,
+			dataType:"html",
+			success:function(data){
+				
+					
+				}
+				
+			
+			
+		})
+		
+		
+		
+	}
+	

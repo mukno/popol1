@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -70,7 +71,7 @@ public class MemberController {
 				
 			}else {
 				System.out.println("failddd");
-				model.addAttribute("loginResult","login fail");
+				model.addAttribute("loginResult","아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
 				model.addAttribute("uri",uri);
 				
 				
@@ -128,7 +129,24 @@ public class MemberController {
 		return ""+result;
 	}
 	
-
+	@GetMapping("/sign_login")
+	public @ResponseBody String sign_login(MemberVO vo
+										   ,HttpServletRequest request) {
+		MemberVO user=service.member_login(vo);
+		System.out.println(request.getRequestURI());
+		if(user!=null) {
+			System.out.println("11111111");
+			return "1";
+			
+		}else {
+			System.out.println("22222222");
+			return "0";
+			
+			
+		
+		}
+		
+	}
 	
 	
 

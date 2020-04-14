@@ -14,20 +14,6 @@
 </head>
 <body>	
 <%@include file="./include/sign.jsp" %>
-<%if(request.getAttribute("loginResult")!=null){ %>
-	<div class="pay">
-		<div class="pay_modal">
-			<div class="pay_modal_content">
-				<p style="font-size:25px;">비밀번호가 틀립니다.</p>
-				<button onclick="">확인</button>
-			
-			</div>
-			
-		
-		</div>
-		
-	</div>
-<%} %>		
 <div class="wrapper">
 		<div class="container">
 		<%@include file="./include/header.jsp" %>
@@ -70,9 +56,10 @@
 								<div class="login_box">
 									<input type="password" name="userPw" placeholder="비밀번호" />
 								</div>
+								<p class="result">${loginResult }</p>
 								<div class="login_etc">
 									<button type="submit" style="cursor:pointer;">로그인</button>
-									<p class="etc_pwd"><a href="">${loginResult }1비밀번호 찾기</a></p>
+									<p class="etc_pwd"><a href="">비밀번호 찾기</a></p>
 									<p><a href="">신규 회원<br>주문하기</a></p>
 									
 								</div>

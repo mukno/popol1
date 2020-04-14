@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% 
-String basicURL=request.getRequestURI();
-
-%>
 
 <!DOCTYPE html>
 <html>
@@ -30,8 +26,10 @@ String basicURL=request.getRequestURI();
 				</div>
 				
 				<div class="login_body">
-					<form action="../home" method="post">
-									<input type="hidden" name="basicURL" value="<%=basicURL %>"/>
+					
+								
+									
+							<form id="sign_form">
 								<div class="login_box">
 									<input type="text" name="userId" placeholder="아이디"/>
 								
@@ -39,14 +37,15 @@ String basicURL=request.getRequestURI();
 								<div class="login_box">
 									<input type="password" name="userPw" placeholder="비밀번호" />
 								</div>
+							</form>
 								<div class="login_etc">
-									<button type="submit">로그인</button>
+									<button onclick="sign_go()">로그인</button>
 									<p class="etc_pwd"><a href="">비밀번호 찾기</a></p>
 									<p><a href="">신규 회원<br>주문하기</a></p>
 									
 								</div>
 								
-							</form>
+						
 							
 				</div>
 				

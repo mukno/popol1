@@ -43,11 +43,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter implements Sess
 					session.setMaxInactiveInterval(24*60*60);
 				}
 				
-				String uri=(String)modelAndView.getModelMap().get("uri");
-				if(!uri.equals("/home")) {
-					System.out.println(uri);
-					response.sendRedirect(uri);
-				}
+				
 				
 				
 			}
