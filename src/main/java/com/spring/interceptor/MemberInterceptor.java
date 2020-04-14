@@ -37,7 +37,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter implements Sess
 				HttpSession session=request.getSession();
 				Object user=modelAndView.getModelMap().get("user");
 				
-				¤©
+			
 				if(user!=null) {
 					session.setAttribute(LOGIN, user);
 					session.setMaxInactiveInterval(24*60*60);
