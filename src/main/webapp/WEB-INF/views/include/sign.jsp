@@ -38,7 +38,7 @@
 									<input type="password" name="userPw" placeholder="비밀번호" />
 								</div>
 							</form>
-								<div class="login_etc">
+								<div class="login_etc"> 
 									<button onclick="sign_go()">로그인</button>
 									<p class="etc_pwd"><a href="">비밀번호 찾기</a></p>
 									<p><a href="">신규 회원<br>주문하기</a></p>

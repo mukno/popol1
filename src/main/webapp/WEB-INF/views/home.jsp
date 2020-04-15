@@ -48,7 +48,6 @@
 						
 						<div class="login_body">
 							<form action="home" method="post">
-									<input type="hidden" name="uri" value="<%=basicURL %>"/>
 								<div class="login_box">
 									<input type="text" name="userId" placeholder="아이디"/>
 								

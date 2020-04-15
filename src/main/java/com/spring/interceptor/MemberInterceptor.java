@@ -28,12 +28,9 @@ public class MemberInterceptor extends HandlerInterceptorAdapter implements Sess
 						   ,HttpServletResponse response
 						   , Object handler
 						   ,ModelAndView modelAndView) throws Exception {
-			System.out.println("posthandle");
 			String method=(String)modelAndView.getModelMap().get("method");
-			System.out.println(method);
 
 			if(method!=null) {
-				System.out.println("dd");
 				HttpSession session=request.getSession();
 				Object user=modelAndView.getModelMap().get("user");
 				

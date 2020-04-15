@@ -128,20 +128,26 @@ var $slideWrap=$(".slide_wrap"),
 	
 	function sign_go(){
 		
-		var form_data=$("#sign_form").serialize();
+		var sign_form=$("#sign_form").serialize();
 		
 		$.ajax({
 			url:"/sign_login",
-			data:form_data,
+			data:sign_form,
 			dataType:"html",
 			success:function(data){
 				
+				console.log(data)
+					if(data!=null){
+						console.log(data)
+						
+						
+					}
 					
 				}
 				
 			
 			
-		})
+		});
 		
 		
 		

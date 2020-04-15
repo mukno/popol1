@@ -290,6 +290,7 @@ padding-right: 313px;
 	padding:10px;
 	border-radius: 4px;
 	font-size:23px;
+	cursor:pointer;
 }
 
 .login_body .login_etc .etc_pwd{

@@ -26,6 +26,8 @@ import com.spring.service.MenuService;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
+
+
 @Slf4j
 @Controller
 public class MemberController {
@@ -130,21 +132,32 @@ public class MemberController {
 	}
 	
 	@GetMapping("/sign_login")
-	public @ResponseBody String sign_login(MemberVO vo
+	public @ResponseBody String sign_login(@RequestParam("userId")String userId
+										   ,@RequestParam("userPw")String userPw
 										   ,HttpServletRequest request) {
+		MemberVO vo=new MemberVO();
+		
+		vo.setUserId(userId);
+		vo.setUserPw(userPw);
+		
 		MemberVO user=service.member_login(vo);
 		System.out.println(request.getRequestURI());
+		String uri=request.getRequestURI();
+		HttpSession session=request.getSession();
+		
 		if(user!=null) {
-			System.out.println("11111111");
-			return "1";
+			System.out.println(uri);
+			session.setAttribute(SessionNames.LOGIN, user);
+			session.setMaxInactiveInterval(24*60*60);
+			return uri;
 			
 		}else {
-			System.out.println("22222222");
-			return "0";
+			return null;
 			
 			
 		
 		}
+		
 		
 	}
 	

@@ -20,10 +20,6 @@
 			<%@include file="../include/header.jsp" %>
 			<%@include file="../include/main_menu.jsp" %>
 			
-			<form>
-				<input type="hidden" class="uri" value="<%=basicURL %>"/>
-			</form>
-		
 		
 		</div>
 		
