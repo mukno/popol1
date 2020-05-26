@@ -19,5 +19,11 @@
 		 from member_list
 		 where userId=#{userId}
 	</select>
+	
+	<update id="change_addr">
+		update member_list set useradd=#{useradd} where userId=#{userId} 
+	</update>
+	
+	
 
 </mapper>

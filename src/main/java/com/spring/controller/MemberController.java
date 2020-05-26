@@ -1,11 +1,13 @@
 package com.spring.controller;
 
 import java.io.Console;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -18,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.domain.AddressVO;
 import com.spring.domain.MemberVO;
 import com.spring.interceptor.SessionNames;
 import com.spring.service.MemberService;
 import com.spring.service.MenuService;
+import com.spring.service.MypageService;
 
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
@@ -38,16 +42,36 @@ public class MemberController {
 	@Inject
 	private MenuService menu_service;
 	
+	@Inject
+	private MypageService mypage_service;
 	
 	@GetMapping("/home")
-	public void home(){
-		System.out.println("getghang22");
+	public void home(HttpSession session
+					 ,Model model) throws Exception{
+		try {
+			System.out.println("Get home");
+			MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
+			String userId=vo.getUserId();
+			if(userId!=null) {
+				List<AddressVO> address_List=mypage_service.address_selectAll(userId);
+				model.addAttribute("address_List",address_List);
+				
+			}
+			
+		} catch (Exception e) {
+			
+		}
+		
+		
+		
+		
 	}
 	
 	@GetMapping("/test")
 	public void test() {
 			
 	}
+	
 	
 	
 	
@@ -70,6 +94,9 @@ public class MemberController {
 				
 				model.addAttribute("user",user);
 				model.addAttribute("uri",uri);
+				String userId=user.getUserId();
+				List<AddressVO> address_List=mypage_service.address_selectAll(userId);
+				model.addAttribute("address_List",address_List);
 				
 			}else {
 				System.out.println("failddd");
@@ -141,18 +168,19 @@ public class MemberController {
 		vo.setUserPw(userPw);
 		
 		MemberVO user=service.member_login(vo);
-		System.out.println(request.getRequestURI());
-		String uri=request.getRequestURI();
+		String uri=null;
 		HttpSession session=request.getSession();
 		
+		
 		if(user!=null) {
-			System.out.println(uri);
+			uri="succ";
 			session.setAttribute(SessionNames.LOGIN, user);
 			session.setMaxInactiveInterval(24*60*60);
 			return uri;
 			
 		}else {
-			return null;
+			uri="fail";
+			return uri;
 			
 			
 		
@@ -161,6 +189,26 @@ public class MemberController {
 		
 	}
 	
+	@GetMapping("change_addr")
+	public @ResponseBody String change_addr(HttpSession session
+						   ,@RequestParam("useradd")String useradd) {
+		
+		MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
+		String userId=vo.getUserId();
+		
+		int result=service.change_addr(useradd, userId);
+		if(result==1) {
+			MemberVO user=service.select_member(userId);
+			session.setAttribute(SessionNames.LOGIN, user);
+			
+		}
+		
+		
+		return "1";
+		
+		
+		
+	}
 	
 
 }

@@ -11,7 +11,7 @@
 						<ul class="sidebar">
 							<li><a href="/mypage/mypage_select"><span class="side_list_circle"></span>주문 조회</a></li>
 							<li><a href="/mypage/mypage_order"><span class="side_list_circle"></span>주문 내역</a></li>
-							<li><a href="/mypage/mypage_set"><span class="side_list_circle"></span>계정 설정</a></li>
+							<li><a href="/mypage/mypage_address"><span class="side_list_circle"></span>주소록</a></li>
 							<li><a href="/mypage/mypage_change"><span class="side_list_circle"></span>비밀번호 변경</a></li>
 							
 						

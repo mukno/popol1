@@ -93,7 +93,34 @@ var $slideWrap=$(".slide_wrap"),
 			}	
 
 			});
+		
+		    
+		var select = $('.select-script select');
+	    select.change(function(){
+	        var select_name = $(this).children('option:selected').text();
+	        $(this).siblings("label").text(select_name);
+	        
+	        $.ajax({
+	        	url:"change_addr",
+	        	data:"useradd="+select_name,
+	        	success:function(data){
+	        		
+	        		location.href="/home";
+	        		
+	        	}
+	        	
+	        	
+	        })
+	        
+	        
+	        
+	        
+	        
+	        
+	    });
 
+
+		
 		
 	});
 	
@@ -106,18 +133,22 @@ var $slideWrap=$(".slide_wrap"),
 	
 	//x클릭시 로그인창 비활성화
 	function mark_x(){
-
+		
+		
 		$(".singin").css("opacity","0");
 		$(".singin").css("pointer-events","none");
 		$("body").removeClass("sign_body");
-		
 		
 	}
 	
 	//로그인창 활성화
 	function login_go(){
+		var sign_form=$("#sign_form");
 		
-		
+
+		sign_form.find("input[name=userId]").val("");
+		sign_form.find("input[name=userPw]").val("");
+		sign_form.find(".result").html("");
 		$(".singin").css("opacity","1");
 		$(".singin").css("pointer-events","auto");
 		
@@ -125,20 +156,46 @@ var $slideWrap=$(".slide_wrap"),
 		
 		
 	}
+	function login_press(f){
+		
+		if(f.keyCode==13){
+			login_form.submit();
+			
+		}
+		
+	}
+	
+	function sign_press(){
+		
+		if(event.keyCode==13){
+			sign_go();
+			
+		}
+		
+	}
 	
 	function sign_go(){
 		
-		var sign_form=$("#sign_form").serialize();
+		var sign_form=$("#sign_form");
+		var sign_form_data=sign_form.serialize();
+		var result=sign_form.find(".result");
 		
 		$.ajax({
 			url:"/sign_login",
-			data:sign_form,
+			data:sign_form_data,
 			dataType:"html",
 			success:function(data){
 				
-				console.log(data)
-					if(data!=null){
-						console.log(data)
+					console.log(data);
+					if(data=="succ"){
+						location.href="/home";
+						
+						
+					}else{
+						
+						result.html("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
+						sign_form.find("input[name=userId]").val("");
+						sign_form.find("input[name=userPw]").val("");
 						
 						
 					}

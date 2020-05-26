@@ -55,7 +55,7 @@
 									<td class="kcal-colum"></td>							
 								</tr>
 								
-								<c:if test="${menu_num eq '1'}">
+						
 								
 								<tbody class="two">
 									<tr class="set_table">
@@ -76,7 +76,7 @@
 										<td class="kcal-colum"></td>							
 									</tr>
 								</tbody>
-								</c:if>
+								
 							</tbody>
 						</table>
 					</div>

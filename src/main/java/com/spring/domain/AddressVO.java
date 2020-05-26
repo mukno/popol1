@@ -7,8 +7,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ItemNumberVO {
-	private int start_Num;
-	private int end_Num;
+public class AddressVO {
+	private String userId;
+	private String useradd;
+	private int add_num;
+	
 
 }

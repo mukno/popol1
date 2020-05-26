@@ -31,12 +31,13 @@
 									
 							<form id="sign_form">
 								<div class="login_box">
-									<input type="text" name="userId" placeholder="아이디"/>
+									<input type="text" name="userId" placeholder="아이디" onkeypress="sign_press()"/>
 								
 								</div>
 								<div class="login_box">
-									<input type="password" name="userPw" placeholder="비밀번호" />
+									<input type="password" name="userPw" placeholder="비밀번호" onkeypress="sign_press()"/>
 								</div>
+								<p class="result"></p>
 							</form>
 								<div class="login_etc"> 
 									<button onclick="sign_go()">로그인</button>

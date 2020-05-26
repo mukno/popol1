@@ -12,13 +12,22 @@
 	
 			<div class="header">
 				<div class="login">
-					<span><a href="/mypage/mypage_select">주문조회</a></span>
-				
+					<%
+						if(session.getAttribute("loginUser")==null){
+					%>
+							<span><a onclick="login_go()">주문조회</a></span>
+					<%
+						}else{
+					%>
+							<span><a href="/mypage/mypage_select">주문조회</a></span>
+					<%
+						}
+					%>
 					<span class="login_line">
 					<%
 						if(session.getAttribute("loginUser")==null){
 					%>
-							<a href="#" onclick="login_go()">로그인</a>
+							<a onclick="login_go()">로그인</a>
 					<%
 						}else{
 					%>
@@ -40,8 +49,8 @@
 					<div class="mark_li">
 					<a class="mark" href="/home"><img src="https://www.mcdelivery.co.kr/kr/static/1575943212598/assets/82/img/mcdelivery_logo_ko.jpg" alt="" /></a>
 					</div>
-					
-					<ul>
+					<div class="menu_list">
+					<ul class="menu_un">
 						<li class="menu_li">
 							<a href="/menu/menu_recommend"><i class="fas fa-hamburger"></i>  메뉴</a>
 						</li>
@@ -62,10 +71,12 @@
 								<li><a href="#">ㅇㅇㅇㅇㅇ3</a></li>
 								<li><a href="#">ㅇㅇㅇㅇㅇ4</a></li>
 							</ul>
+						</li>
+						
 
 						
 					</ul>
-					
+					</div>
 
 				</div>
 			
