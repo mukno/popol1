@@ -158,6 +158,8 @@ function item_change(t,amount){
 				
 			}
 	}else{
+		
+		
 					
 			if(amount==1){
 			
