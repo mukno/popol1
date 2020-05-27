@@ -39,8 +39,7 @@ public class MypageController {
 	
 	@GetMapping("/sample")
 	public void getsample(){
-		  
-		asf
+	
 	}
 	@PostMapping("/sample")
 	public void postsample(){
