@@ -1,11 +1,9 @@
 package com.spring.interceptor;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -16,7 +14,6 @@ public class MemberInterceptor extends HandlerInterceptorAdapter implements Sess
 							 ,HttpServletResponse response
 							 ,Object handler) throws Exception {
 		
-		 HttpSession session=request.getSession();
 		 
 		 
 		 

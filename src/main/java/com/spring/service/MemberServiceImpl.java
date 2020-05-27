@@ -24,6 +24,13 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
+	public int change_addr(String useradd, String userId) {
+		return mapper.change_addr(useradd, userId);
+	}
+
+
+
+	@Override
 	public MemberVO member_login(MemberVO vo) {
 		return mapper.member_login(vo);
 	}

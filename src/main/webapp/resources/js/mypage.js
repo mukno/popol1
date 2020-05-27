@@ -151,3 +151,52 @@ function pay_exit(result){
 	
 	
 }
+
+
+function add_address(){
+	
+
+	var zipNo=$("#zipNo");
+	var roadAddrPart1=$("#roadAddrPart1");
+	var addrDetail=$("#addrDetail");
+	var zipNo_check=$(".zipNo_check");
+	var roadAddrPart_check=$(".roadAddrPart_check");
+	
+	if(zipNo.val()==""||zipNo.val()==null){
+		zipNo_check.html("* 필수 입력항목입니다.");
+		zipNo.focus();
+		return false;
+	}
+	if(roadAddrPart1.val()==""||roadAddrPart1.val()==null){
+		zipNo_check.html("");
+		roadAddrPart_check.html("* 필수 입력항목입니다.");
+		roadAddrPart1.focus();
+		return false;
+	}
+	var roadAdd=roadAddrPart1.val();
+	var roadAdd2=addrDetail.val();
+	
+	console.log(roadAdd);
+	console.log(roadAdd2);
+	$.ajax({
+		url:"/mypage/add_address",
+		data:"roadAddrPart1="+roadAdd+"&addrDetail="+roadAdd2,
+		dataType:"html",
+		success:function(data){
+			if(data==1){
+				location.href="/home";
+				
+			}
+			
+		}
+		
+		
+	});
+	
+	
+	
+
+	
+	
+	
+}

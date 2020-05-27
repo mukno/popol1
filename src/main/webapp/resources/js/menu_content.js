@@ -22,7 +22,15 @@ function Do_add(num){
 				$(".price").html(data.item_Price);
 				$(".price2").html(data.item_Set_Price);
 				$(".kcal-colum").html("<i class='fas fa-plug'></i>"+data.item_Kcal+"Kcal");
-				$(".two").find(".kcal-colum").html("<i class='fas fa-plug'></i>"+(parseInt(data.item_Kcal)+200)+"Kcal");
+				
+				if(data.item_categori!='1'){
+					$(".two").css("display","none");
+					
+				}else{
+					$(".two").find(".kcal-colum").html("<i class='fas fa-plug'></i>"+(parseInt(data.item_Kcal)+200)+"Kcal");
+					
+				}
+				
 				
 			
 		}
@@ -43,6 +51,40 @@ function add_close(){
 	$(".select-one").html('<p class="select-zero">아직 아무 메뉴도 선택하지 않으셨습니다.</p>');
 	item_change(0);
 	tot=0;
+	
+
+	var height = $(document).scrollTop()+117;
+		
+
+	if($(document).scrollLeft()>0){
+		$side_move.css("position","relative");
+		$side_move.css("top",$(document).scrollTop()+"px");
+		if($side_move.offset().top>$footer.offset().top-375){
+			
+			$side_move.removeClass("side_menu").addClass("side_menu_fixed");
+	
+		}
+		if(height<$footer.offset().top-375){
+			
+			$side_move.removeClass("side_menu_fixed").addClass("side_menu");
+		}
+		return false;
+	}else{
+		$side_move.css("position","fixed");
+		$side_move.css("top","auto");
+		if($side_move.offset().top>$footer.offset().top-375){
+			
+			$side_move.removeClass("side_menu").addClass("side_menu_fixed");
+	
+		}
+		if(height<$footer.offset().top-375){
+			
+			$side_move.removeClass("side_menu_fixed").addClass("side_menu");
+		}
+		
+	}
+	
+	
 };
 function minus(t){
 

@@ -144,9 +144,11 @@ public class MenuController {
 	}
 	
 	@GetMapping("/add")
-	public @ResponseBody ItemVO add_button(@RequestParam("num")int num){
+	public @ResponseBody ItemVO add_button(@RequestParam("num")int num,Model model){
 		ItemVO item=service.item_selectOne(num);
 	
+		model.addAttribute(item);
+		
 		return item; 
 		
 	}
@@ -173,7 +175,6 @@ public class MenuController {
 		shop.setUserId(userId);
 	
 		if(order_recode.isEmpty()) {
-			System.out.println("11111");
 			//order_recode에 든 상품이 없는경우 order_count 1부터 시작
 			int order_count=1;
 			shop.setOrder_count(order_count);
@@ -187,7 +188,6 @@ public class MenuController {
 			}
 			
 		}else {
-			System.out.println("222222");
 			int order_count=service.select_order_count(userId);
 			shop.setOrder_count(order_count+1);
 			
