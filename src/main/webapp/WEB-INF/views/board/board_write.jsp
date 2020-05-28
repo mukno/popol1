@@ -19,24 +19,13 @@
 			<div class="board">
 				<table>
 					<tr>
-						<th nowrap width="80">번 호</th>
-                        <th nowrap>제 목</th>
-                        <th nowrap width="140">글쓴이</th>
-                        <th nowrap width="100">등록일</th>
-                        <th nowrap width="120">조회</th>
+                        <th nowrap>제 목 : <input type="text" name="board_title" maxlength="50"></th>
 					</tr>
 					<tr>
-						<td>1</td>
-						<td style="text-align: left; padding-left:70px;">한자</td>
-						<td>김태욱</td>
-						<td>12412</td>
-						<td>2</td>
+						<td><textarea name="board_content" maxlength="2048" style="height:350px"></textarea></td>
 					</tr>
 					<tr>
-						<th colspan="5" style="text-align: right; padding:7px;"><a href="/board/board_write"><i class="fas fa-pencil-alt"></i> 글쓰기</a></th>
-					</tr>
-					<tr>
-						<th colspan="5" style="text-align: right;">제목검색</th>
+						<th colspan="5" style="text-align: right; padding:7px;"><a href="/board/board_write"><i class="fas fa-pencil-alt"></i> 작성완료</a></th>
 					</tr>
 				
 				</table>

@@ -15,6 +15,10 @@ public class BoardContorller {
 	public void board_index() {
 		
 	}
+	@GetMapping("/board_write")
+	public void board_write() {
+		
+	}
 	
 	
 
