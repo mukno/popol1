@@ -27,7 +27,7 @@ td{
 	
 	
 }
-table a{
+table a,button{
 	padding:2px 5px;
 	border:1px solid black;
 	border-radius:5px 5px 5px 5px;
@@ -37,7 +37,13 @@ table a{
 	cursor: pointer;
 	
 }
-table a i{
+table a,button i{
 	color:#dc952b;
 
-	}
+}
+textarea{
+	resize: none;
+	
+	
+}
+	
