@@ -1,9 +1,12 @@
 package com.spring.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +28,11 @@ public class BoardContorller {
 	private BoardService service;
 	
 	@GetMapping("/board_index")
-	public void board_index() {
+	public void board_index(Model model) {
+			List<BoardVO> list=service.getList();
+			model.addAttribute("list",list);	
+		
+		
 		
 	}
 	@GetMapping("/board_write")

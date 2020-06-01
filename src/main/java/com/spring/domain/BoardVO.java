@@ -16,6 +16,7 @@ public class BoardVO {
 	private String writer;
 	private Date updatedate;
 	private int hits;
+	private int board_group;
 	
 	private int replyCnt;
 	private String board_content;

@@ -1,5 +1,7 @@
 package com.spring.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -16,6 +18,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int writeAction(BoardVO bvo) {
 		return mapper.writeAction(bvo);
+	}
+
+	@Override
+	public List<BoardVO> getList() {
+		return mapper.getList();
 	}
 
 }

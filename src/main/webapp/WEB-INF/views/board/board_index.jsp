@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,13 +26,17 @@
                         <th nowrap width="100">등록일</th>
                         <th nowrap width="120">조회</th>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td style="text-align: left; padding-left:70px;">한자</td>
-						<td>김태욱</td>
-						<td>12412</td>
-						<td>2</td>
-					</tr>
+					<c:if test="${list !eq null}">
+					<c:forEach var="list" items="#{list}">
+						<tr>
+							<td>#{list.bno }</td>
+							<td style="text-align: left; padding-left:70px;">#{list.title }</td>
+							<td>#{list.writer }</td>
+							<td>#{list.updatedate }</td>
+							<td>#{list.hits }</td>
+						</tr>
+					</c:forEach>
+					</c:if>
 					<tr>
 						<th colspan="5" style="text-align: right; padding:7px;"><a href="/board/board_write"><i class="fas fa-pencil-alt"></i> 글쓰기</a></th>
 					</tr>
