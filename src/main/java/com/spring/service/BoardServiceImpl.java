@@ -25,4 +25,28 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.getList();
 	}
 
+	@Override
+	public BoardVO boardShow(int bno) {
+		return mapper.boardShow(bno);
+	}
+
+	@Override
+	public int updateAction(BoardVO bvo) {
+		return mapper.updateAction(bvo);
+	}
+
+	@Override
+	public int deleteAction(int bno) {
+		return mapper.deleteAction(bno);
+	}
+
+	@Override
+	public void addhits(int bno) {
+		mapper.addhits(bno);
+	}
+
+	
+	
+	
 }
+

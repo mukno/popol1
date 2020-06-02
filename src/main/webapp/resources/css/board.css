@@ -46,4 +46,31 @@ textarea{
 	
 	
 }
+.boardShow_header{
+	font-family: gulim, 굴림, Helvetica;
+	font-size: 15px;	
 	
+}
+
+.boardShow_title{
+	text-align:left;
+	border:0px;
+	width: 420px;
+    height: 170px;
+	padding:10px 0 0 40px;
+	font-family: Dotum, 돋움, Helvetica;
+    font-size: 14pt;
+    font-weight: bold;
+    color: brown;
+	
+}
+
+.boardShow_content{
+	font-family: gulim, 굴림, Helvetica;
+    font-size: 12px;	
+    min-height: 500px;
+    padding:20px 40px 100px 40px;
+    text-align:left;
+    
+}
+

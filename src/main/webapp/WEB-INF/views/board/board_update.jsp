@@ -17,19 +17,19 @@
 <%@include file="../include/header.jsp" %>
 			<div class="wrapper_mypage">
 			<div class="board">
-				<form action="/board/writeAction" method="post">
+				<form action="/board/updateAction?bno=${vo.bno} " method="post">
 					<table>
 						<tr>
-	                        <th nowrap>제 목  :    <input type="text" name="title" maxlength="50" style="width:300px;"></th>
+	                        <th nowrap>제 목  :    <input type="text" name="title" maxlength="50" style="width:300px;" value="${vo.title }"></th>
 						</tr>
 						<tr>
 	                        <th nowrap style="padding:4px 30px 4px 0; text-align: right;">${loginUser.userName }</th>
 						</tr>
 						<tr>
-							<td><textarea name="board_content" maxlength="2048" style="height:350px; width: 99%;"></textarea></td>
+							<td><textarea name="board_content" maxlength="2048" style="height:350px; width: 99%;">${vo.board_content }</textarea></td>
 						</tr>
 						<tr>
-							<th colspan="5" style="text-align: right; padding:7px;"><button type="submit"><i class="fas fa-pencil-alt"></i> 작성완료</button></th>
+							<th colspan="5" style="text-align: right; padding:7px;"><button type="submit"><i class="fas fa-pencil-alt"></i> 수정완료</button></th>
 						</tr>
 					</table>
 				</form>

@@ -7,8 +7,8 @@
 		<selectKey keyProperty="board_group" order="BEFORE" resultType="int">
 			select max(board_group)+1 from board
 		</selectKey> 
-		insert into board(bno,title,writer,updatedate,board_content,board_group) 
-		values(seq_board.nextval,#{title},#{writer},sysdate,#{board_content},#{board_group})
+		insert into board(bno,title,writer,updatedate,board_content,board_group,userId) 
+		values(seq_board.nextval,#{title},#{writer},sysdate,#{board_content},#{board_group},#{userId})
 		
 	
 	</insert>
@@ -19,5 +19,25 @@
 		select *from board order by board_group DESC
 	</select>
 	
+	<select id="boardShow" resultType="com.spring.domain.BoardVO">
+		select *from board where bno=#{bno}
+		
+	</select>
+	
+	<update id="addhits">
+		update board set hits=hits+1 where bno=#{bno}
+	
+	</update>
+	
+	<update id="updateAction">
+		update board set title=#{title},board_content=#{board_content} where bno=#{bno}
+	
+	</update>
+
+	<delete id="deleteAction">
+		delete from board where bno=#{bno}
+	
+	</delete>
+
 
 </mapper>

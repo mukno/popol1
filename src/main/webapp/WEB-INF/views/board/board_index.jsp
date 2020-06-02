@@ -26,19 +26,22 @@
                         <th nowrap width="100">등록일</th>
                         <th nowrap width="120">조회</th>
 					</tr>
-					<c:if test="${list !eq null}">
-					<c:forEach var="list" items="#{list}">
+					<c:forEach var="list" items="${list}">
 						<tr>
-							<td>#{list.bno }</td>
-							<td style="text-align: left; padding-left:70px;">#{list.title }</td>
-							<td>#{list.writer }</td>
-							<td>#{list.updatedate }</td>
-							<td>#{list.hits }</td>
+							<td>${list.bno }</td>
+							<td style="text-align: left; padding-left:70px;"><a href="/board/boardShow?bno=${list.bno }">${list.title }</a></td>
+							<td>${list.writer }</td>
+							<td>${list.updatedate }</td>
+							<td>${list.hits }</td>
 						</tr>
 					</c:forEach>
-					</c:if>
 					<tr>
-						<th colspan="5" style="text-align: right; padding:7px;"><a href="/board/board_write"><i class="fas fa-pencil-alt"></i> 글쓰기</a></th>
+						<% if(session.getAttribute("loginUser")==null){ %>
+							<th colspan="5" style="text-align: right; padding:7px;"><a onclick="login_go()"><i class="fas fa-pencil-alt"></i> 글쓰기</a></th>
+						<%}else{ %>
+							<th colspan="5" style="text-align: right; padding:7px;"><a href="/board/board_write"><i class="fas fa-pencil-alt"></i> 글쓰기</a></th>
+						<%} %>
+						
 					</tr>
 					<tr>
 						<th colspan="5" style="text-align: right;">제목검색</th>
