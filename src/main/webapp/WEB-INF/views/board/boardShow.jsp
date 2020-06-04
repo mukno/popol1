@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/home.css">
+<link rel="stylesheet" type="text/css" href="../css/comment.css">
 <link rel="stylesheet" type="text/css" href="../css/board.css">
 <script src="https://kit.fontawesome.com/f29e9424f2.js"></script>
 </head>
@@ -60,7 +61,66 @@
 						</tr>
 					</table>
 				</form>
-			
+				
+				<table>
+					<c:if test="${vo.replyCnt > 0}">
+						<c:forEach var="comment" items="">
+							<tr>
+								<td>
+									<div>
+										${comment.comment_id}<br>
+										<font size="2" color="Lighgray">${comment.comment_date }</font>
+									</div>
+								
+								</td>
+								<td>
+									<div>
+										${comment.comment_content }
+									</div>
+								</td>
+								<td>
+									<div class="comment_button">
+										<a>[답변]</a>
+										<a>[수정]</a>
+										<a>[삭제]</a>
+									</div>
+								</td>
+								
+							</tr>
+							
+						</c:forEach>
+					
+					</c:if>
+				</table>
+					<form id="">
+							<input type="hidden" name="comment_board" value="${board.bno }">
+							<input type="hidden" name="comment_board" value="${loginUser.userId }">
+					</form>
+				<div class="comment">
+					<div class="comment_write">
+					
+					<table>
+						<tr>
+							<td width="150">
+								<div>
+									${loginUser.userId }
+								</div>
+							</td>
+							<td>
+								<div>
+									<textarea name="board_content" style="width: 99%; height:70px;"></textarea>
+								</div>
+							</td>
+							<td width="150">
+								<button class="comment_button" onclick="writeCnt()">
+									등록
+								</button>
+							</td>
+							
+						</tr>
+					</table>
+				</div>
+			</div>
 			
 			</div>
 				

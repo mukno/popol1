@@ -30,7 +30,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter implements Sess
 			if(method!=null) {
 				HttpSession session=request.getSession();
 				Object user=modelAndView.getModelMap().get("user");
-				
+				 
 			
 				if(user!=null) {
 					session.setAttribute(LOGIN, user);

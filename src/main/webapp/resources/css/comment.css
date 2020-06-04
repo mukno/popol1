@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.comment{
+	padding:50px;
+	
+	
+}
+.comment_write{
+	border:1px solid black;
+	padding:20px;
+	}
+
+.comment_write table{
+
+	margin-top: 10px;
+	border-top: 1px solid #f3f3f3;
+	
+}
+
+	
+.comment_write >table{
+	border:0px;
+}
+
+
+
+
+.comment_write td{
+	background-color:#f8f8f8;
+	border:0;
+	}
+.comment_button{
+	width: 70px;
+	height: 70px;
+	
+	
+	
+}
