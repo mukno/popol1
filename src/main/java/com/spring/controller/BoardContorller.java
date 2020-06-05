@@ -3,6 +3,7 @@ package com.spring.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.domain.BoardVO;
+import com.spring.domain.CommentVO;
 import com.spring.domain.MemberVO;
 import com.spring.interceptor.SessionNames;
 import com.spring.service.BoardService;
@@ -132,6 +135,34 @@ public class BoardContorller {
 			
 		}
 	}
+	
+	@GetMapping("/commentAction")
+	public @ResponseBody int commentAction(@RequestParam("comment_board")int comment_board
+												   ,@RequestParam("comment_content")String comment_content
+												   ,HttpSession session){
+		
+		MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
+		String userName=vo.getUserName();
+		
+		System.out.println("1111 "+comment_board);
+		System.out.println("1111 "+comment_content);
+		
+		CommentVO addcvo=new CommentVO();
+		addcvo.setComment_id(userName);
+		addcvo.setComment_board(comment_board);
+		addcvo.setComment_content(comment_content);
+		
+		int result=service.commentAction(addcvo);
+		
+	
+		return result;
+			
+		
+		
+		
+		
+	}
+	
 	
 
 }

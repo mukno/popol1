@@ -3,6 +3,7 @@ package com.spring.mapper;
 import java.util.List;
 
 import com.spring.domain.BoardVO;
+import com.spring.domain.CommentVO;
 
 public interface BoardMapper {
 
@@ -12,6 +13,7 @@ public interface BoardMapper {
 	public List<BoardVO> getList();
 	public BoardVO boardShow(int bno);
 	public void addhits(int bno);
+	public int commentAction(CommentVO addcvo);
 	
 	
 }

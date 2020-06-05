@@ -38,6 +38,18 @@
 		delete from board where bno=#{bno}
 	
 	</delete>
+	
+	
+	<insert id="commentAction">
+		<selectKey keyProperty="comment_num" order="BEFORE" resultType="int">
+			select comment_seq.nextval from dual
+		</selectKey>
+	
+		insert into board_comment values(#{comment_num},#{comment_board},#{comment_id},sysdate,#{comment_content})
+	
+	
+	</insert>
+
 
 
 </mapper>

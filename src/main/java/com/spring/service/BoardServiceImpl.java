@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.domain.BoardVO;
+import com.spring.domain.CommentVO;
 import com.spring.mapper.BoardMapper;
 
 @Service
@@ -38,6 +39,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int deleteAction(int bno) {
 		return mapper.deleteAction(bno);
+	}
+
+	@Override
+	public int commentAction(CommentVO addcvo) {
+		return mapper.commentAction(addcvo);
 	}
 
 	@Override

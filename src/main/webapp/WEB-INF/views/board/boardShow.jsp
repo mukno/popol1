@@ -92,9 +92,9 @@
 					
 					</c:if>
 				</table>
-					<form id="">
-							<input type="hidden" name="comment_board" value="${board.bno }">
-							<input type="hidden" name="comment_board" value="${loginUser.userId }">
+					<form id="boardShow_form">
+							<input type="hidden" id="comment_board" value="${vo.bno }">
+							<input type="hidden" id="last_comment_num" value="${last_comment_num }">
 					</form>
 				<div class="comment">
 					<div class="comment_write">
@@ -108,7 +108,7 @@
 							</td>
 							<td>
 								<div>
-									<textarea name="board_content" style="width: 99%; height:70px;"></textarea>
+									<textarea maxlength="256" id="comment_content" style="width: 99%; height:70px;"></textarea>
 								</div>
 							</td>
 							<td width="150">
@@ -132,6 +132,7 @@
 <%@include file="../include/footer.jsp" %>	
 	
 <script type="text/javascript" src="../js/home.js"></script>
+<script type="text/javascript" src="../js/comment.js"></script>
 <script type="text/javascript" src="../js/board.js"></script>
 
 

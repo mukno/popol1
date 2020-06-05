@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.spring.domain.BoardVO;
+import com.spring.domain.CommentVO;
 
 public interface BoardService {
 
@@ -14,5 +15,6 @@ public interface BoardService {
 	public List<BoardVO> getList();
 	public BoardVO boardShow(int bno);
 	public void addhits(int bno);
+	public int commentAction(CommentVO addcvo);
 	
 }
