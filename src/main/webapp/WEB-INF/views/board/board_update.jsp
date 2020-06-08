@@ -29,7 +29,7 @@
 							<td><textarea name="board_content" maxlength="2048" style="height:350px; width: 99%;">${vo.board_content }</textarea></td>
 						</tr>
 						<tr>
-							<th colspan="5" style="text-align: right; padding:7px;"><button type="submit"><i class="fas fa-pencil-alt"></i> 수정완료</button></th>
+							<th class="tablebutton" olspan="5" style="text-align: right; padding:7px;"><button type="submit"><i class="fas fa-pencil-alt"></i> 수정완료</button></th>
 						</tr>
 					</table>
 				</form>

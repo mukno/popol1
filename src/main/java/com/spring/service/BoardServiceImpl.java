@@ -27,8 +27,18 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public List<CommentVO> getComment(int bno) {
+		return mapper.getComment(bno);
+	}
+
+	@Override
 	public BoardVO boardShow(int bno) {
 		return mapper.boardShow(bno);
+	}
+
+	@Override
+	public void addreplyCnt(int bno) {
+		mapper.addreplyCnt(bno);
 	}
 
 	@Override

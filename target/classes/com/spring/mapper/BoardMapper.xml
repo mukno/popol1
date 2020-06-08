@@ -49,7 +49,18 @@
 	
 	
 	</insert>
+	
+	<select id="getComment" resultType="com.spring.domain.CommentVO">
+		select *from board_comment where comment_board=#{bno} order by comment_num desc
+	
+	
+	</select>
 
+	<update id="addreplyCnt">
+		update board set replyCnt=replyCnt+1 where bno=#{bno}
+		
+		
+	</update>
 
 
 </mapper>

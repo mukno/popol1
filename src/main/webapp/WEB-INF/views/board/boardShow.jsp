@@ -39,7 +39,7 @@
 							
 						</tr>
 						<tr>
-							<th colspan="3" style="text-align: right; padding:7px;">
+							<th class="tablebutton" colspan="3" style="text-align: right; padding:7px;">
 								<a href="/board/board_index"><i class="fas fa-pencil-alt"></i> 목록</a>
 								
 								<c:if test="${loginUser.userId eq vo.userId}">
@@ -62,44 +62,29 @@
 					</table>
 				</form>
 				
-				<table>
-					<c:if test="${vo.replyCnt > 0}">
-						<c:forEach var="comment" items="">
-							<tr>
-								<td>
-									<div>
-										${comment.comment_id}<br>
-										<font size="2" color="Lighgray">${comment.comment_date }</font>
-									</div>
-								
-								</td>
-								<td>
-									<div>
-										${comment.comment_content }
-									</div>
-								</td>
-								<td>
-									<div class="comment_button">
-										<a>[답변]</a>
-										<a>[수정]</a>
-										<a>[삭제]</a>
-									</div>
-								</td>
-								
-							</tr>
-							
-						</c:forEach>
-					
-					</c:if>
-				</table>
+				
 					<form id="boardShow_form">
 							<input type="hidden" id="comment_board" value="${vo.bno }">
 							<input type="hidden" id="last_comment_num" value="${last_comment_num }">
 					</form>
 				<div class="comment">
-					<div class="comment_write">
+					<div class="comment_wrapper">
+					<table class="comment_show">
+						<tr>
+							<td class="replyCnt" colspan="3" style="text-align: left;"><i class="fas fa-angle-down"></i> <a>코멘트</a>(${vo.replyCnt })</td>
+						</tr>
+						
+						<c:if test="${vo.replyCnt > 0}">
+							<c:forEach var="comment" items="${comment_list}">
+								<%@include file="../include/comment.jsp" %>
+								
+							</c:forEach>
 					
-					<table>
+						</c:if>
+					</table>
+					
+					
+					<table class="comment_write">
 						<tr>
 							<td width="150">
 								<div>

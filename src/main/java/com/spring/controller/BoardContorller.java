@@ -75,10 +75,17 @@ public class BoardContorller {
 	@GetMapping("/boardShow")
 	public void boardShow(@RequestParam("bno")int bno
 						  ,Model model) {
-		service.addhits(bno);
 		
-		BoardVO vo=service.boardShow(bno);
+		service.addhits(bno);//조회수 추가
+		
+		BoardVO vo=service.boardShow(bno);//게시판내용물
+		
+		List<CommentVO> comment_list=service.getComment(bno);//해당 게시판 댓글내용list
+		
+		
 		model.addAttribute("vo",vo);
+		model.addAttribute("comment_list",comment_list);
+		
 		
 		
 		
@@ -153,8 +160,11 @@ public class BoardContorller {
 		addcvo.setComment_content(comment_content);
 		
 		int result=service.commentAction(addcvo);
+		if(result==1) {
+			service.addreplyCnt(comment_board);//게시판db의 reply_cnt값 증가
+			
+		}
 		
-	
 		return result;
 			
 		

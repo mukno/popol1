@@ -1,16 +1,16 @@
 @charset "UTF-8";
 
 .comment{
-	padding:50px;
+	padding:40px 20px 40px 20px;
 	
 	
 }
-.comment_write{
+.comment_wrapper{
 	border:1px solid black;
-	padding:20px;
+	padding:0 20px 20px 20px;
 	}
 
-.comment_write table{
+.comment_wrapper table{
 
 	margin-top: 10px;
 	border-top: 1px solid #f3f3f3;
@@ -18,10 +18,9 @@
 }
 
 	
-.comment_write >table{
+.comment_wrapper >table{
 	border:0px;
 }
-
 
 
 
@@ -33,6 +32,41 @@
 	width: 70px;
 	height: 70px;
 	
+}
+
+.comment_show tr{
+	border-bottom: 1px solid black;
 	
+}
+.comment_show{
+	margin-bottom: 30px;
+	
+}
+
+
+.comment_show .replyCnt{
+	font-size: 12px;
+    color: red;
+    font-weight: bold;
+	
+	
+}
+
+.comment_show .replyCnt a{
+	color: black;
+	
+}
+.comment_one{
+	text-align: left;
+	padding: 15px 10px 15px 10px;
+	
+}
+
+.comment_one .content{
+	margin-top: 10px;
+	
+}
+.comment_one .fix{
+	text-align: right;
 	
 }

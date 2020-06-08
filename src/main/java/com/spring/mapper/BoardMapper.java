@@ -13,7 +13,8 @@ public interface BoardMapper {
 	public List<BoardVO> getList();
 	public BoardVO boardShow(int bno);
 	public void addhits(int bno);
+	public void addreplyCnt(int bno);
 	public int commentAction(CommentVO addcvo);
-	
+	public List<CommentVO> getComment(int bno);
 	
 }

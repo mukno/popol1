@@ -27,7 +27,7 @@ td{
 	
 	
 }
-table a,button{
+.tablebutton a,button{
 	padding:2px 5px;
 	border:1px solid black;
 	border-radius:5px 5px 5px 5px;
@@ -37,7 +37,7 @@ table a,button{
 	cursor: pointer;
 	
 }
-table a,button i{
+.tablebutton a,button i{
 	color:#dc952b;
 
 }
@@ -72,5 +72,13 @@ textarea{
     padding:20px 40px 100px 40px;
     text-align:left;
     
+}
+
+.replyCnt{
+	font-size: 12px;
+    color: #25710A;
+    font-weight: bold;
+	
+	
 }
 
