@@ -1,5 +1,6 @@
 package com.spring.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -150,12 +151,14 @@ public class BoardContorller {
 		
 		MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
 		String userName=vo.getUserName();
+		String userId=vo.getUserId();
 		
 		System.out.println("1111 "+comment_board);
 		System.out.println("1111 "+comment_content);
 		
 		CommentVO addcvo=new CommentVO();
-		addcvo.setComment_id(userName);
+		addcvo.setComment_id(userId);
+		addcvo.setComment_name(userName);
 		addcvo.setComment_board(comment_board);
 		addcvo.setComment_content(comment_content);
 		
@@ -172,6 +175,18 @@ public class BoardContorller {
 		
 		
 	}
+	
+	@GetMapping("/refreshAction")
+	public @ResponseBody List<CommentVO> refreshAction(@RequestParam("comment_board")int comment_board){
+		
+		List<CommentVO> list=service.getComment(comment_board);
+		
+		System.out.println("11111111111111"+list);
+		
+		return list;
+	}
+	
+	
 	
 	
 

@@ -76,8 +76,26 @@
 						
 						<c:if test="${vo.replyCnt > 0}">
 							<c:forEach var="comment" items="${comment_list}">
-								<%@include file="../include/comment.jsp" %>
+								<tr>
+								<td class="comment_one">
+									<div>
+										${comment.comment_name} 
+										<font size="2" color="Lighgray">${comment.comment_date }</font> 
+											<c:if test="${comment.comment_id eq loginUser.userId}">
+												<a onclick=""><i class='far fa-window-close'></i></a>
+											</c:if>
+									</div>
 								
+									<div class="content">
+										${comment.comment_content }
+									</div>
+									<div class="fix">
+										<a>[답글]</a>
+									</div>
+								</td>
+							
+								
+							</tr>
 							</c:forEach>
 					
 						</c:if>
@@ -99,6 +117,9 @@
 							<td width="150">
 								<button class="comment_button" onclick="writeCnt()">
 									등록
+								</button>
+								<button class="comment_button" onclick="refresh()">
+									refresh
 								</button>
 							</td>
 							
