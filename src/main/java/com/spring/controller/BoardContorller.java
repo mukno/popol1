@@ -121,7 +121,7 @@ public class BoardContorller {
 		int result=service.updateAction(bvo);
 		
 		if(result==1) {
-			return "redirect:/board/board_index";
+			return "redirect:/board/boardShow?bno="+bno;
 			
 		}else {
 			return "redirect:/home";
@@ -133,15 +133,22 @@ public class BoardContorller {
 	@GetMapping("board_delete")
 	public String board_delete(@RequestParam("bno")int bno) {
 		
-		int result=service.deleteAction(bno);
 		
-		if(result==1) {
+		int reply_delete_result=service.deleteAllComment(bno);//글댓글먼저 지우기
+		
+		int board_delete_result=service.deleteAction(bno);//글지우기
+		
+		if(board_delete_result==1) {
 			return "redirect:/board/board_index";
 			
 		}else {
 			return "redirect:/home";
 			
 		}
+			
+		
+		
+		
 	}
 	
 	@GetMapping("/commentAction")
@@ -185,6 +192,19 @@ public class BoardContorller {
 		
 		return list;
 	}
+	
+	@GetMapping("/comment_Delete")
+	public @ResponseBody int comment_Delete(@RequestParam("comment_num")int comment_num
+			 				   ,@RequestParam("comment_board")int comment_board) {
+		int result=service.comment_Delete(comment_num, comment_board);
+		service.minusreplyCnt(comment_board);
+		System.out.println("result:::");
+		System.out.println("result:::"+result);
+		
+		return result;
+		
+	}
+	
 	
 	
 	

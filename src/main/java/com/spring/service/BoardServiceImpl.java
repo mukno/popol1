@@ -37,6 +37,21 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public void minusreplyCnt(int bno) {
+		mapper.minusreplyCnt(bno);
+	}
+
+	@Override
+	public int deleteAllComment(int comment_board) {
+		return mapper.deleteAllComment(comment_board);
+	}
+
+	@Override
+	public int comment_Delete(int comment_num, int comment_board) {
+		return mapper.comment_Delete(comment_num, comment_board);
+	}
+
+	@Override
 	public void addreplyCnt(int bno) {
 		mapper.addreplyCnt(bno);
 	}

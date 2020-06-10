@@ -58,9 +58,24 @@
 
 	<update id="addreplyCnt">
 		update board set replyCnt=replyCnt+1 where bno=#{bno}
-		
-		
 	</update>
+	
+	<update id="minusreplyCnt">
+		update board set replyCnt=replyCnt-1 where bno=#{bno}
+	</update>
+	
+	<delete id="comment_Delete">
+		<include refid="commentDelete"/> and comment_num=#{comment_num} 	
+	</delete>
+	
+	<delete id="deleteAllComment">
+		<include refid="commentDelete"/>
+	</delete>
+	
+	<sql id="commentDelete">
+		delete from board_comment where comment_board=#{comment_board}
+	</sql>
+	
 
 
 </mapper>

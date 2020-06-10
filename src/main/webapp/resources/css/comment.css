@@ -27,7 +27,14 @@
 .comment_write td{
 	background-color:#f8f8f8;
 	border:0;
+	
 	}
+.comment_write{
+	border-style: none;
+	border-width: 0px;
+	
+}
+	
 .comment_button{
 	width: 70px;
 	height: 70px;
@@ -35,14 +42,13 @@
 }
 
 .comment_show tr{
-	border-bottom: 1px solid black;
+	border-bottom: 0;
 	
 }
 .comment_show{
 	margin-bottom: 30px;
 	
 }
-
 
 .comment_show .replyCnt{
 	font-size: 12px;
@@ -70,3 +76,26 @@
 	text-align: right;
 	
 }
+
+.cursor_button{
+	cursor: pointer;
+		
+}
+
+.comment_refresh{
+	text-align: right;
+	font-size: 13px;
+	color:red;
+	text-decoration: underline;
+	
+	
+	
+}
+.comment_refresh i{
+	margin-right:5px;	
+}
+
+
+
+
+

@@ -62,13 +62,16 @@
 					</table>
 				</form>
 				
+				<form id="boardShow_form">
+						<input type="hidden" id="comment_board" value="${vo.bno }">
+						<input type="hidden" id="last_comment_num" value="${last_comment_num }">
+						<input type="hidden" id="userId" value="${loginUser.userId }">
+						<input type="hidden" id="userName" value="${loginUser.userName }">
+				</form>
 				
-					<form id="boardShow_form">
-							<input type="hidden" id="comment_board" value="${vo.bno }">
-							<input type="hidden" id="last_comment_num" value="${last_comment_num }">
-					</form>
 				<div class="comment">
 					<div class="comment_wrapper">
+					
 					<table class="comment_show">
 						<tr>
 							<td class="replyCnt" colspan="3" style="text-align: left;"><i class="fas fa-angle-down"></i> <a>코멘트</a>(${vo.replyCnt })</td>
@@ -77,12 +80,12 @@
 						<c:if test="${vo.replyCnt > 0}">
 							<c:forEach var="comment" items="${comment_list}">
 								<tr>
-								<td class="comment_one">
+								<td class="comment_one" id="comment_${comment.comment_num }">
 									<div>
 										${comment.comment_name} 
 										<font size="2" color="Lighgray">${comment.comment_date }</font> 
 											<c:if test="${comment.comment_id eq loginUser.userId}">
-												<a onclick=""><i class='far fa-window-close'></i></a>
+												<a class="cursor_button" onclick="comment_delete(${comment.comment_num })"><i class='far fa-window-close'></i></a>
 											</c:if>
 									</div>
 								
@@ -90,7 +93,7 @@
 										${comment.comment_content }
 									</div>
 									<div class="fix">
-										<a>[답글]</a>
+										<a class="cursor_button" onclick="comment_comment(${comment.comment_num })">[답글]</a>
 									</div>
 								</td>
 							
@@ -101,12 +104,14 @@
 						</c:if>
 					</table>
 					
-					
+					<div class="comment_refresh cursor_button">
+						<a onclick="refresh()"><i class="fas fa-sync-alt"></i>새로고침</a>
+					</div>
 					<table class="comment_write">
 						<tr>
 							<td width="150">
 								<div>
-									${loginUser.userId }
+									${loginUser.userName }
 								</div>
 							</td>
 							<td>
@@ -117,9 +122,6 @@
 							<td width="150">
 								<button class="comment_button" onclick="writeCnt()">
 									등록
-								</button>
-								<button class="comment_button" onclick="refresh()">
-									refresh
 								</button>
 							</td>
 							
