@@ -79,26 +79,52 @@
 						
 						<c:if test="${vo.replyCnt > 0}">
 							<c:forEach var="comment" items="${comment_list}">
-								<tr>
-								<td class="comment_one" id="comment_${comment.comment_num }">
-									<div>
-										${comment.comment_name} 
-										<font size="2" color="Lighgray">${comment.comment_date }</font> 
-											<c:if test="${comment.comment_id eq loginUser.userId}">
-												<a class="cursor_button" onclick="comment_delete(${comment.comment_num })"><i class='far fa-window-close'></i></a>
-											</c:if>
-									</div>
-								
-									<div class="content">
-										${comment.comment_content }
-									</div>
-									<div class="fix">
-										<a class="cursor_button" onclick="comment_comment(${comment.comment_num })">[답글]</a>
-									</div>
-								</td>
+									<c:choose>
+										<c:when test="${comment.comment_child == 0 }">
+											<tr>
+											<td class="comment_one" id="comment_${comment.comment_num }">
+												<div>
+													${comment.comment_name} 
+													<font size="2" color="Lighgray">${comment.comment_date }</font> 
+														<c:if test="${comment.comment_id eq loginUser.userId}">
+															<a class="cursor_button" onclick="comment_delete(${comment.comment_num })"><i class='far fa-window-close'></i></a>
+														</c:if>
+												</div>
+											
+												<div class="content">
+													${comment.comment_content }
+												</div>
+												<div class="fix">
+													<a class="cursor_button" onclick="comment_comment(${comment.comment_num })">[답글]</a>
+												</div>
+											</td>
+											</tr>
+										</c:when>
+										<c:otherwise>
+											<tr>
+											<td class="comment_comment_one" id="comment_${comment.comment_num }">
+												<div class="comment_c">
+												<div class="comment_child_mark">
+													<i class="fas fa-long-arrow-alt-right"></i>
+												</div>
+												<div class="comment_child_content">
+													<div>
+														${comment.comment_name} 
+														<font size="2" color="Lighgray">${comment.comment_date }</font> 
+															<c:if test="${comment.comment_id eq loginUser.userId}">
+																<a class="cursor_button" onclick="comment_delete(${comment.comment_num })"><i class='far fa-window-close'></i></a>
+															</c:if>
+													</div>
+													<div class="content">
+														${comment.comment_content }
+													</div>
+												</div>
+												</div>
+											</td>
+											</tr>
+										</c:otherwise>
+									</c:choose>
 							
-								
-							</tr>
 							</c:forEach>
 					
 						</c:if>
@@ -120,7 +146,7 @@
 								</div>
 							</td>
 							<td width="150">
-								<button class="comment_button" onclick="writeCnt()">
+								<button class="comment_button" onclick="writeCnt(0)">
 									등록
 								</button>
 							</td>

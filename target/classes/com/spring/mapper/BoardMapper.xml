@@ -45,14 +45,25 @@
 			select comment_seq.nextval from dual
 		</selectKey>
 	
-		insert into board_comment values(#{comment_num},#{comment_board},#{comment_id},sysdate,#{comment_content},#{comment_name})
+		insert into board_comment values(#{comment_num},#{comment_board},#{comment_id},sysdate,#{comment_content},#{comment_name},
+		<choose>
+			<when test="comment_parent == 0">
+				#{comment_num},0)
+			
+			</when>
+			<otherwise>
+				#{comment_parent},1)
+			
+			</otherwise>
+		
+		</choose>
+		
 	
 	
 	</insert>
 	
 	<select id="getComment" resultType="com.spring.domain.CommentVO">
-		select *from board_comment where comment_board=#{bno} order by comment_num asc
-	
+		select *from board_comment where comment_board=#{bno} order by comment_parent,comment_num asc
 	
 	</select>
 

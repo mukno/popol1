@@ -19,14 +19,15 @@ th{
 	border-bottom:1px solid black;
 }
 td{
-	border-bottom:1px solid black;
 	background-color:white;
 	padding-top:4px;
 	padding-bottom:4px;
 	text-align: center;
-	
+	border-bottom: 1px solid black;
 	
 }
+
+
 .tablebutton a,button{
 	padding:2px 5px;
 	border:1px solid black;

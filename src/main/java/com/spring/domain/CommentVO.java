@@ -16,6 +16,8 @@ public class CommentVO {
     private String comment_name;       
     private Date comment_date;       
     private String comment_content;  
+    private int comment_parent;       
+    private int comment_child;       
 
 
 }
