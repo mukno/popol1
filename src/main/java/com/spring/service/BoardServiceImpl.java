@@ -32,6 +32,11 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public String nowTime() {
+		return mapper.nowTime();
+	}
+
+	@Override
 	public BoardVO boardShow(int bno) {
 		return mapper.boardShow(bno);
 	}

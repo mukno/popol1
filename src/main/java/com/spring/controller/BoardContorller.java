@@ -36,9 +36,21 @@ public class BoardContorller {
 	@GetMapping("/board_index")
 	public void board_index(Model model) {
 			List<BoardVO> list=service.getList();
+			
+			String nowTime=service.nowTime();
+			
+			for (BoardVO boardVO : list) {
+				String writeTime=boardVO.getUpdatedate();
+				if(writeTime.substring(0,10).equals(nowTime.substring(0,10))) {
+					boardVO.setUpdatedate(writeTime.substring(11));
+					
+				}else {
+					boardVO.setUpdatedate(writeTime.substring(5,10));
+					
+				}
+			}
+			
 			model.addAttribute("list",list);	
-		
-		
 		
 	}
 	@GetMapping("/board_write")
@@ -53,9 +65,7 @@ public class BoardContorller {
 		MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
 		String userName=vo.getUserName();
 		String userId=vo.getUserId();
-		System.out.println("1111111111111111"+board_content);
 		board_content=board_content.replace("\n", "<br>");
-		System.out.println("2222222222222222"+board_content);
 		
 		BoardVO bvo=new BoardVO();
 		bvo.setBoard_content(board_content);
@@ -165,9 +175,7 @@ public class BoardContorller {
 		int comment_parent=cvo.getComment_parent();
 		int comment_board=cvo.getComment_board();
 		
-		System.out.println("1111111111111111"+comment_content);
 		comment_content=comment_content.replace("\n", "<br>");
-		System.out.println("2222222222222222"+comment_content);
 		CommentVO addcvo=new CommentVO();
 		addcvo.setComment_id(userId);
 		addcvo.setComment_name(userName);

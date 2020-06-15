@@ -21,5 +21,6 @@ public interface BoardMapper {
 	public List<CommentVO> getComment(int bno);
 	public int comment_Delete(@Param("comment_num")int comment_num,@Param("comment_board")int comment_board);
 	public int deleteAllComment(int comment_board);
+	public String nowTime();
 	
 }

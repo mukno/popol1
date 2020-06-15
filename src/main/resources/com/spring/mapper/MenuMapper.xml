@@ -19,7 +19,14 @@
 	<insert id="add_shop">
 		insert
 		 into shopDB
-		 values(#{userId},#{item_number},#{item_amount},#{item_name},#{item_price},#{item_turn},#{order_count})
+		 values(
+		 #{userId}
+		 ,#{item_number}
+		 ,#{item_amount}
+		 ,#{item_name}
+		 ,#{item_price}
+		 ,#{item_turn}
+		 ,#{order_count})
 	</insert>
 	
 	<delete id="deleteAll_shop">
@@ -83,7 +90,12 @@
 	<insert id="add_order_recode_detail">
 		insert
 		 into order_recode_detail
-		 values(#{userId},#{order_count},#{order_time},#{deliver_time},#{deliver_address})
+		 values(
+		 #{userId}
+		 ,#{order_count}
+		 ,#{order_time}
+		 ,#{deliver_time}
+		 ,#{deliver_address})
 		 
 		
 	</insert>

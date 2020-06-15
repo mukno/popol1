@@ -42,6 +42,7 @@ function refresh(){
 	
 	var comment_board=$("#comment_board").val();
 	var userId=$("#userId").val();
+	console.log("1111  "+userId);
 	
 	if(comment_comment_state!=1){
 	comment_comment(comment_comment_state);
@@ -66,7 +67,7 @@ function refresh(){
 						comment_show+="<td class='comment_one' id='comment_"+val.comment_num+"'>";
 						comment_show+="<div>";
 						comment_show+=val.comment_name;
-						comment_show+="<font size='2' color='Lighgray'>("+val.comment_date+")</font> ";
+						comment_show+="<font size='2' color='Lighgray'> ("+val.comment_date+")</font> ";
 						if(val.comment_id==userId){
 							comment_show+="<a class='cursor_button' onclick='comment_delete("+val.comment_num+")'><i class='far fa-window-close'></i></a>";
 						}
@@ -75,7 +76,11 @@ function refresh(){
 						comment_show+=val.comment_content;
 						comment_show+="</div>";
 						comment_show+="<div class='fix'>";
-						comment_show+="<a class='cursor_button' onclick='comment_comment("+val.comment_num+")'>[답글]</a>";
+						if(userId!=""){
+							comment_show+="<a class='cursor_button' onclick='comment_comment("+val.comment_num+")'>[답글]</a>";
+						}else{
+							comment_show+="<a class='cursor_button' onclick='login_go()'>[답글]</a>";
+						}
 						comment_show+="</div>";
 						comment_show+="</td>";
 						comment_show+="</tr>";
@@ -85,14 +90,14 @@ function refresh(){
 						comment_show+="<td class='comment_comment_one' id='comment_"+val.comment_num+"'>";
 						comment_show+="<div class='comment_c'>";
 						comment_show+="<div class='comment_child_mark'>";
-						comment_show+="<i class='fas fa-long-arrow-alt-right'></i>";
+						comment_show+=" <i class='fas fa-long-arrow-alt-right'></i>";
 						comment_show+="</div>";
 						comment_show+="<div class='comment_child_content'>";
 						comment_show+="<div>";
 						comment_show+=val.comment_name;
-						comment_show+="	<font size='2' color='Lighgray'>"+val.comment_date+"</font>";
+						comment_show+=" <font size='2' color='Lighgray'>("+val.comment_date+")</font>";
 						if(val.comment_id==userId){
-							comment_show+="<a class='cursor_button' onclick='comment_delete("+val.comment_num+")'><i class='far fa-window-close'></i></a>";
+							comment_show+="<a class='cursor_button' onclick='comment_delete("+val.comment_num+")'> <i class='far fa-window-close'></i></a>";
 						}
 						comment_show+="</div>";
 						comment_show+="<div class='content'>";

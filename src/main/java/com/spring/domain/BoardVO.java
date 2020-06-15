@@ -15,7 +15,7 @@ public class BoardVO {
 	private String title;
 	private String writer;
 	private String userId;
-	private Date updatedate;
+	private String updatedate;
 	private int hits;
 	private int board_group;
 	

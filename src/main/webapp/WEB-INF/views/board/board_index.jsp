@@ -18,7 +18,7 @@
 <%@include file="../include/header.jsp" %>
 			<div class="wrapper_mypage">
 			<div class="board">
-				<table>
+				<table class="board_main">
 					<tr>
 						<th nowrap width="80">번 호</th>
                         <th nowrap>제 목</th>

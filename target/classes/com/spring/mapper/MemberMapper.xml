@@ -11,7 +11,10 @@
 	</select>
 	
 	<update id="change_pwd">
-		update member_list set userPw=#{new_userPw} where userId=#{userId} 
+		update
+		 member_list 
+		 set userPw=#{new_userPw} 
+		 where userId=#{userId} 
 	</update>
 	
 	<select id="select_member" resultType="com.spring.domain.MemberVO">
@@ -21,7 +24,10 @@
 	</select>
 	
 	<update id="change_addr">
-		update member_list set useradd=#{useradd} where userId=#{userId} 
+		update
+		 member_list 
+		 set useradd=#{useradd} 
+		 where userId=#{userId} 
 	</update>
 	
 	

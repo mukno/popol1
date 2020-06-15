@@ -85,7 +85,7 @@
 											<td class="comment_one" id="comment_${comment.comment_num }">
 												<div>
 													${comment.comment_name} 
-													<font size="2" color="Lighgray">${comment.comment_date }</font> 
+													<font size="2" color="Lighgray">(${comment.comment_date })</font> 
 														<c:if test="${comment.comment_id eq loginUser.userId}">
 															<a class="cursor_button" onclick="comment_delete(${comment.comment_num })"><i class='far fa-window-close'></i></a>
 														</c:if>
@@ -94,9 +94,15 @@
 												<div class="content">
 													${comment.comment_content }
 												</div>
-												<div class="fix">
-													<a class="cursor_button" onclick="comment_comment(${comment.comment_num })">[답글]</a>
-												</div>
+												<%if(session.getAttribute("loginUser")!=null){ %>
+													<div class="fix">
+														<a class="cursor_button" onclick="comment_comment(${comment.comment_num })">[답글]</a>
+													</div>
+												<%}else{ %>
+													<div class="fix">
+														<a class="cursor_button" onclick="login_go()">[답글]</a>
+													</div>
+												<%} %>
 											</td>
 											</tr>
 										</c:when>
@@ -110,7 +116,7 @@
 												<div class="comment_child_content">
 													<div>
 														${comment.comment_name} 
-														<font size="2" color="Lighgray">${comment.comment_date }</font> 
+														<font size="2" color="Lighgray">(${comment.comment_date })</font> 
 															<c:if test="${comment.comment_id eq loginUser.userId}">
 																<a class="cursor_button" onclick="comment_delete(${comment.comment_num })"><i class='far fa-window-close'></i></a>
 															</c:if>
@@ -133,6 +139,7 @@
 					<div class="comment_refresh cursor_button">
 						<a onclick="refresh()"><i class="fas fa-sync-alt"></i>새로고침</a>
 					</div>
+					<%if(session.getAttribute("loginUser") != null){ %>
 					<table class="comment_write">
 						<tr>
 							<td width="150">
@@ -153,6 +160,30 @@
 							
 						</tr>
 					</table>
+					<%}else{ %>
+					<table class="comment_write">
+						<tr>
+							<td width="20">
+								<div>
+									
+								</div>
+							</td>
+							<td>
+								<div>
+									<textarea onclick="login_go()" maxlength="256" id="comment_content" style="width: 99%; height:70px;"></textarea>
+								</div>
+							</td>
+							<td width="150">
+								<button class="comment_button" onclick="login_go()">
+									등록
+								</button>
+							</td>
+							
+						</tr>
+					</table>
+					<%} %>
+					
+					
 				</div>
 			</div>
 			
