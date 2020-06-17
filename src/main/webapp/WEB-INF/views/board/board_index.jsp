@@ -49,9 +49,46 @@
 					</tr>
 					<tr>
 						<th colspan="3">
-							<c:forEach var="page" begin="${paging.startPage}" end="${paging.endPage }">
-                            				<a href="/board/board_index?pageNum=${page }">${page }</a>
-							</c:forEach>
+							<ul class="paging">
+								<c:choose>
+									<c:when test="${paging.prev }">
+										<li>
+											<a href="/board/board_index?pageNum=${paging.startPage-1 }"><i class="fas fa-angle-double-left truecolor"></i> 이전</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a><i class="fas fa-angle-double-left"></i> 이전</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								<c:forEach var="page" begin="${paging.startPage}" end="${paging.endPage }">
+									<c:choose>
+										<c:when test="${paging.pageNum eq page}">
+											<li>
+		                           				<a class="nowPage" href="/board/board_index?pageNum=${page }">${page }</a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li>
+		                           				<a href="/board/board_index?pageNum=${page }">${page }</a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${paging.next }">
+										<li>
+											<a href="/board/board_index?pageNum=${paging.endPage+1 }">다음 <i class="fas fa-angle-double-right truecolor"></i></a> 
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a>다음 <i class="fas fa-angle-double-right"></i></a> 
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
 						</th>
 						<th colspan="2" style="text-align: right;">제목검색</th>
 					</tr>

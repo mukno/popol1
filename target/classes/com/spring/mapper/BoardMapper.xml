@@ -27,7 +27,7 @@
 		 ,#{userId})
 	</insert>
 	
-	<select id="getList" resultType="com.spring.domain.BoardVO">
+	<select id="getList" resultType="com.spring.domain.BoardVO" parameterType="map">
 		select
 		 bno
 		 ,title

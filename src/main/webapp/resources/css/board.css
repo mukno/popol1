@@ -93,4 +93,21 @@ textarea{
 	
 }
 
+.paging li{
+	float:left;
+	margin:0 7px 0 7px;
+	
+}
+
+.truecolor{
+	color:blue;
+	
+}
+
+
+.nowPage{
+	color:red;
+	text-decoration: underline;
+	
+}
 

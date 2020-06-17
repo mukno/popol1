@@ -13,7 +13,7 @@ public interface BoardMapper {
 	public int writeAction(BoardVO bvo);
 	public int updateAction(BoardVO bvo);
 	public int deleteAction(int bno);
-	public List<BoardVO> getList(Map<String, Object> map);
+	public List<BoardVO> getList(Map<String, Integer> map);
 	public BoardVO boardShow(int bno);
 	public void addhits(int bno);
 	public void addreplyCnt(int bno);

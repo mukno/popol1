@@ -25,9 +25,9 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public List<BoardVO> getList(int pageNum,int countList) {
-		Map<String, Object> map=new HashMap<String, Object>();
+		Map<String, Integer> map=new HashMap<String, Integer>();
 		map.put("pageNum", pageNum);
-		map.put("countPage", countList);
+		map.put("countList", countList);
 		return mapper.getList(map);
 	}
 

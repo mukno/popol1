@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ShopDeleteVO {
 	
-	public int item_turn;
-	public String userId;
+	private int item_turn;
+	private String userId;
 
 }
