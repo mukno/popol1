@@ -1,6 +1,7 @@
 package com.spring.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -12,7 +13,7 @@ public interface BoardMapper {
 	public int writeAction(BoardVO bvo);
 	public int updateAction(BoardVO bvo);
 	public int deleteAction(int bno);
-	public List<BoardVO> getList();
+	public List<BoardVO> getList(Map<String, Object> map);
 	public BoardVO boardShow(int bno);
 	public void addhits(int bno);
 	public void addreplyCnt(int bno);
@@ -22,5 +23,7 @@ public interface BoardMapper {
 	public int comment_Delete(@Param("comment_num")int comment_num,@Param("comment_board")int comment_board);
 	public int deleteAllComment(int comment_board);
 	public String nowTime();
+	public int getListCnt();
+	
 	
 }

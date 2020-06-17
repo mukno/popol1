@@ -28,7 +28,6 @@
 	</insert>
 	
 	<select id="getList" resultType="com.spring.domain.BoardVO">
-		
 		select
 		 bno
 		 ,title
@@ -39,8 +38,14 @@
 		 ,board_content
 		 ,board_group
 		 ,userId 
-		 from board 
-		 order by board_group DESC
+		 from (
+		 	select
+		 	 row_number() over(order by board_group desc) as rn
+		     , A.* 
+		     from board A 
+		     order by board_group desc)
+		 where rn between #{pageNum}*#{countList}-#{countList}+1 and #{pageNum}*#{countList}
+		 
 	</select>
 	
 	<select id="boardShow" resultType="com.spring.domain.BoardVO">
@@ -160,6 +165,12 @@
 		 TO_CHAR(sysdate, 'RRRR-MM-DD HH24:MI') 
 		 from dual
 		
+	</select>
+	
+	<select id="getListCnt" resultType="int">
+		select
+		 count(*)
+		 from board
 	</select>
 
 

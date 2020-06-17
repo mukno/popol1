@@ -13,7 +13,7 @@ public interface BoardService {
 	public int writeAction(BoardVO bvo);
 	public int updateAction(BoardVO bvo);
 	public int deleteAction(int bno);
-	public List<BoardVO> getList();
+	public List<BoardVO> getList(int pageNum,int countList);
 	public BoardVO boardShow(int bno);
 	public void addhits(int bno);
 	public void addreplyCnt(int bno);
@@ -23,4 +23,5 @@ public interface BoardService {
 	public int comment_Delete(@Param("comment_num")int comment_num,@Param("comment_board")int comment_board);
 	public int deleteAllComment(int comment_board);
 	public String nowTime();
+	public int getListCnt();
 }

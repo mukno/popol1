@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spring.domain.BoardVO;
 import com.spring.domain.CommentVO;
 import com.spring.domain.MemberVO;
+import com.spring.domain.paging;
 import com.spring.interceptor.SessionNames;
 import com.spring.service.BoardService;
 
+import lombok.Builder.Default;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -34,10 +36,15 @@ public class BoardContorller {
 	private BoardService service;
 	
 	@GetMapping("/board_index")
-	public void board_index(Model model) {
-			List<BoardVO> list=service.getList();
-			
+	public void board_index(Model model,@RequestParam(defaultValue="1")int pageNum) {
+			System.out.println("11111"+pageNum);
 			String nowTime=service.nowTime();
+			
+			int countList=10;//한 page에 게시물 수
+			int countPage=10;//한번에 보이는 페이지 수
+			int totalCount=service.getListCnt();//총 게시물수
+			
+			List<BoardVO> list=service.getList(pageNum,countList);
 			
 			for (BoardVO boardVO : list) {
 				String writeTime=boardVO.getUpdatedate();
@@ -50,7 +57,9 @@ public class BoardContorller {
 				}
 			}
 			
-			model.addAttribute("list",list);	
+			model.addAttribute("list",list);
+			model.addAttribute("paging",new paging(countList, countPage, totalCount, pageNum));
+			
 		
 	}
 	@GetMapping("/board_write")

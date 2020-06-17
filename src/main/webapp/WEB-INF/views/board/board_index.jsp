@@ -48,7 +48,12 @@
 						
 					</tr>
 					<tr>
-						<th colspan="5" style="text-align: right;">제목검색</th>
+						<th colspan="3">
+							<c:forEach var="page" begin="${paging.startPage}" end="${paging.endPage }">
+                            				<a href="/board/board_index?pageNum=${page }">${page }</a>
+							</c:forEach>
+						</th>
+						<th colspan="2" style="text-align: right;">제목검색</th>
 					</tr>
 				
 				</table>

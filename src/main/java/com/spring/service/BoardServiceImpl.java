@@ -1,6 +1,8 @@
 package com.spring.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -22,8 +24,16 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> getList() {
-		return mapper.getList();
+	public List<BoardVO> getList(int pageNum,int countList) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("pageNum", pageNum);
+		map.put("countPage", countList);
+		return mapper.getList(map);
+	}
+
+	@Override
+	public int getListCnt() {
+		return mapper.getListCnt();
 	}
 
 	@Override
