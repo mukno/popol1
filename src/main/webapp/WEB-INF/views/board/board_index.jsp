@@ -48,7 +48,7 @@
 						
 					</tr>
 					<tr>
-						<th colspan="3">
+						<th colspan="2">
 							<ul class="paging">
 								<c:choose>
 									<c:when test="${paging.prev }">
@@ -90,7 +90,16 @@
 								</c:choose>
 							</ul>
 						</th>
-						<th colspan="2" style="text-align: right;">제목검색</th>
+						<th colspan="3" style="text-align: right;" class="search_zone">
+							<select>
+								<option value="T">&nbsp&nbsp제&nbsp&nbsp목 </option>
+								<option value="C">&nbsp&nbsp내&nbsp&nbsp용 </option>
+								<option value="W">&nbsp&nbsp글쓴이 </option>
+								<option value="TC"> 제목+내용 </option>
+							</select>
+							<input type="text" />
+							<button>검색</button>
+						</th>
 					</tr>
 				
 				</table>
