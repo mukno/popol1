@@ -2,13 +2,12 @@ package com.spring.domain;
 
 import java.util.Date;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.Setter;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class BoardVO {
 
 	private int bno;

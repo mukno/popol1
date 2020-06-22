@@ -36,15 +36,24 @@ public class BoardContorller {
 	private BoardService service;
 	
 	@GetMapping("/board_index")
-	public void board_index(Model model,@RequestParam(defaultValue="1")int pageNum) {
-			System.out.println("11111"+pageNum);
+	public void board_index(Model model
+							,@RequestParam(defaultValue="1")int pageNum
+							,@RequestParam(defaultValue="")String keyword
+							,@RequestParam(defaultValue="1")String type) {
 			String nowTime=service.nowTime();
+			
+			String[] typeArr=null;
+			
+			if(!type.equals("1")) {
+				typeArr=type.split("");
+			}
 			
 			int countList=10;//한 page에 게시물 수
 			int countPage=10;//한번에 보이는 페이지 수
-			int totalCount=service.getListCnt();//총 게시물수
+			int totalCount=service.getListCnt(keyword,typeArr);//총 게시물수
 			
-			List<BoardVO> list=service.getList(pageNum,countList);
+			
+			List<BoardVO> list=service.getList(pageNum,countList,keyword,typeArr);
 			
 			for (BoardVO boardVO : list) {
 				String writeTime=boardVO.getUpdatedate();
@@ -59,6 +68,8 @@ public class BoardContorller {
 			
 			model.addAttribute("list",list);
 			model.addAttribute("paging",new paging(countList, countPage, totalCount, pageNum));
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("type",type);
 			
 		
 	}

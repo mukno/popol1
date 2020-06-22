@@ -44,7 +44,10 @@
 		     , A.* 
 		     from board A 
 		     order by board_group desc)
-		 where rn between #{pageNum}*#{countList}-#{countList}+1 and #{pageNum}*#{countList}
+		 where 
+		 <if test="typeArr!=null"> 
+		 <include refid="search"></include> 
+		 </if> rn between #{pageNum}*#{countList}-#{countList}+1 and #{pageNum}*#{countList}
 		 
 	</select>
 	
@@ -171,7 +174,37 @@
 		select
 		 count(*)
 		 from board
+		 where
+		 <if test="typeArr!=null"> 
+		 <include refid="search"></include>
+		 </if>
+		 bno>0
 	</select>
 
-
+	<sql id="search">  
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			
+				<foreach item="type" collection="typeArr">
+					<trim prefix="OR">
+						<choose>
+							<when test="type=='T'.toString()">
+								title like '%'||#{keyword}||'%'
+							</when>
+							
+							<when test="type=='C'.toString()">
+								board_content like '%'||#{keyword}||'%'
+							</when>
+							
+							<when test="type=='W'.toString()">
+								writer like '%'||#{keyword}||'%'
+							</when>
+						
+						</choose>
+					</trim>	
+			</foreach>
+		</trim>
+	</sql>
+	
+	
+	
 </mapper>

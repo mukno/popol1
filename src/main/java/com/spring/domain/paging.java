@@ -15,6 +15,7 @@ public class paging {
 	private boolean prev;//이전 버튼
 	private boolean next;//다음 버튼
 	
+	
 	public paging(int countList,int countPage,int totalCount,int pageNum) {
 		this.pageNum=pageNum;
 		

@@ -26,6 +26,13 @@
                         <th nowrap width="100">등록일</th>
                         <th nowrap width="120">조회</th>
 					</tr>
+					<c:if test="${list[0] eq null}">
+					
+						<tr>
+							<td colspan="5">ㆍ현재 등록된 게시물이 없습니다.</td>
+						</tr>
+						
+					</c:if>
 					<c:forEach var="list" items="${list}">
 						<tr>
 							<td>${list.bno }</td>
@@ -53,7 +60,7 @@
 								<c:choose>
 									<c:when test="${paging.prev }">
 										<li>
-											<a href="/board/board_index?pageNum=${paging.startPage-1 }"><i class="fas fa-angle-double-left truecolor"></i> 이전</a>
+											<a href="${paging.startPage-1 }"><i class="fas fa-angle-double-left truecolor"></i> 이전</a>
 										</li>
 									</c:when>
 									<c:otherwise>
@@ -66,12 +73,12 @@
 									<c:choose>
 										<c:when test="${paging.pageNum eq page}">
 											<li>
-		                           				<a class="nowPage" href="/board/board_index?pageNum=${page }">${page }</a>
+		                           				<a class="nowPage" href="${page }">${page }</a>
 											</li>
 										</c:when>
 										<c:otherwise>
 											<li>
-		                           				<a href="/board/board_index?pageNum=${page }">${page }</a>
+		                           				<a href="${page }">${page }</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -79,7 +86,7 @@
 								<c:choose>
 									<c:when test="${paging.next }">
 										<li>
-											<a href="/board/board_index?pageNum=${paging.endPage+1 }">다음 <i class="fas fa-angle-double-right truecolor"></i></a> 
+											<a href="${paging.endPage+1 }">다음 <i class="fas fa-angle-double-right truecolor"></i></a> 
 										</li>
 									</c:when>
 									<c:otherwise>
@@ -91,20 +98,27 @@
 							</ul>
 						</th>
 						<th colspan="3" style="text-align: right;" class="search_zone">
-							<select>
+							<form action="" method="get">
+							<select name="type">
 								<option value="T">&nbsp&nbsp제&nbsp&nbsp목 </option>
 								<option value="C">&nbsp&nbsp내&nbsp&nbsp용 </option>
 								<option value="W">&nbsp&nbsp글쓴이 </option>
 								<option value="TC"> 제목+내용 </option>
 							</select>
-							<input type="text" />
-							<button>검색</button>
+							<input type="text" name="keyword"/>
+							<button type="submit"><i class="fas fa-search"></i> 검색</button>
+							</form>
 						</th>
 					</tr>
+					
 				
 				</table>
-			
-			
+				<form action="/board/board_index" method="get" id="actionForm">
+					<input type="hidden" name="pageNum" value="${paging.pageNum }"/>
+					<input type="hidden" name="type" value="${type }"/>
+					<input type="hidden" name="keyword" value="${keyword }"/>
+				</form>
+		
 			</div>
 				
 				
@@ -116,6 +130,7 @@
 	
 	
 <script type="text/javascript" src="../js/home.js"></script>
+<script type="text/javascript" src="../js/board.js"></script>
 
 
 </body>

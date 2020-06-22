@@ -110,20 +110,30 @@ textarea{
 	text-decoration: underline;
 	
 }
-
+.search_zone{
+	padding:10px;
+}
 .search_zone button{	
 	
 	float:right;
+	margin: 0;
+	height: 24px;
 	}
+.search_zone button i{
+	color:red;	
+	
+}
 .search_zone select{
 	margin-right: 5px;
 	width: 72px;
-	height: 21px;
+	height: 24px;
 	
 }
 
 .search_zone input{
 	width: 100px;
+	height: 19px;
+	margin-right: 5px;
 	}
 
 	

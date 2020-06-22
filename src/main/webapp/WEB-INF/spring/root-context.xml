@@ -39,7 +39,6 @@
 	<mybatis-spring:scan base-package="com.spring.mapper"/>
 	
 	<!-- 컨트롤러 없이 view-mapping 시켜주는 코드 -->
-	<!-- <mvc:view-controller path="/menu" view-name="menu"/> -->
 	<mvc:annotation-driven>
 
         <mvc:message-converters>

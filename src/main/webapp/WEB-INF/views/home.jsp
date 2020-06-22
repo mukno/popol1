@@ -44,7 +44,6 @@
 					%>
 						<div class="login_header">
 							<h2>주문을 위해 로그인 해주세요</h2>	
-						
 						</div>
 						
 						<div class="login_body">

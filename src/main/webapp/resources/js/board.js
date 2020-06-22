@@ -13,3 +13,15 @@ function board_delete(bno){
 	}
 	
 }
+
+
+var actionForm=$("#actionForm");
+$(".paging a").click(function(e){
+	e.preventDefault();
+
+	actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+	actionForm.submit();
+	
+	
+
+});

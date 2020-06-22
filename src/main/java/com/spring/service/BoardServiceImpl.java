@@ -24,16 +24,21 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> getList(int pageNum,int countList) {
-		Map<String, Integer> map=new HashMap<String, Integer>();
+	public List<BoardVO> getList(int pageNum,int countList,String keyword,String[] typeArr) {
+		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("pageNum", pageNum);
 		map.put("countList", countList);
+		map.put("keyword", keyword);
+		map.put("typeArr", typeArr);
 		return mapper.getList(map);
 	}
 
 	@Override
-	public int getListCnt() {
-		return mapper.getListCnt();
+	public int getListCnt(String keyword,String[] typeArr) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("typeArr", typeArr);
+		return mapper.getListCnt(map);
 	}
 
 	@Override

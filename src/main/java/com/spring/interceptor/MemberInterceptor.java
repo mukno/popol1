@@ -14,9 +14,6 @@ public class MemberInterceptor extends HandlerInterceptorAdapter implements Sess
 							 ,HttpServletResponse response
 							 ,Object handler) throws Exception {
 		
-		 
-		 
-		 
 		return true;
 	}
 
