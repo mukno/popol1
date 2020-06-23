@@ -4,11 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%
+	String basic_uri=request.getRequestURI();
+	String uri=basic_uri.substring(14,basic_uri.length()-4);
+%>
 </head>
 <body>
 <div class="main_menu">
 				<div class="wrapper_menu">
 					<%@include file="../include/side_menu.jsp" %>
+					<form>
+						<input type="hidden" id="uri" value="<%=uri%>"/>
+					</form>
 					<div class="wrapper_content_menu">
 						<div class="content_header">
 							<div>

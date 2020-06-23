@@ -196,26 +196,27 @@ function item_change(t,amount){
 }
 
 function add_shop(){
-	var uri=$(".uri");
 
+	var uri=$("#uri").val();
 	var item_number=$(".item_number").val();
 	var item_amount=$(".one").find(".input-group").find("input").val();
+	var item_set_amount=$(".two").find(".input-group").find("input").val();
 
 	$.ajax({
 		
-			url:'/menu/shop_add',
-			data:"item_number="+item_number+"&item_amount="+item_amount,
-			success:function(data){
+		url:'/menu/shop_add',
+		data:"item_number="+item_number+"&item_amount="+item_amount+"&item_set_amount="+item_set_amount,
+		success:function(data){
 			
-				location.href="/menu/menu_hamburger";
-
-				
-				
-			}
 			
-		});
+			location.href=uri;
+		}
+		
+	});
 	
 }
+
+
 
 function pay_go(){
 	

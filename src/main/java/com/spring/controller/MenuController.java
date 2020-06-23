@@ -10,9 +10,11 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.Request;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -156,16 +158,37 @@ public class MenuController {
 	@GetMapping("/shop_add")
 	public @ResponseBody void shop_add(@RequestParam("item_number")int item_number
 									   ,@RequestParam("item_amount")int item_amount
+									   ,@RequestParam("item_set_amount")int item_set_amount
 									   ,HttpSession session)throws Exception{
 		//shopDB에있는 데이터 추가 하기위한 session userid
 		MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
 		String userId=vo.getUserId();
 
 		ItemVO item=service.item_selectOne(item_number);
-		int item_tot_price=item_amount*item.getItem_Price();
+		int item_tot_price=0;
+		
+		if(item_set_amount>0) {
+			item_tot_price=item_amount*item.getItem_Set_Price();
+			shop_add_Action(userId,item_number,item_set_amount,item_tot_price,item);
+		}
+		item_tot_price=item_amount*item.getItem_Price();
+		shop_add_Action(userId,item_number,item_amount,item_tot_price,item);
+		
+		
+	
+	
+	}
+	
+	public void shop_add_Action(String userId
+								,int item_number
+								,int item_amount
+								,int item_tot_price
+								,ItemVO item) {
+		
 		List<ShopVO> shops=service.selectAll_shop(userId);
 		
 		List<ShopVO> order_recode=service.select_order_recode(userId);
+		
 		
 		ShopVO shop=new ShopVO();
 		shop.setItem_amount(item_amount);
@@ -203,15 +226,13 @@ public class MenuController {
 		}
 		
 		
-		
-		
-		
-		
-		
-		
 		service.add_shop(shop);
-	
 	}
+	
+	
+	
+	
+	
 	
 	@GetMapping("/shop_delete")
 	public String shop_delete(HttpSession session
