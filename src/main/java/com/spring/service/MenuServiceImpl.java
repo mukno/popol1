@@ -1,6 +1,8 @@
 package com.spring.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -11,6 +13,7 @@ import com.spring.domain.ItemVO;
 import com.spring.domain.OrderRecodeVO;
 import com.spring.domain.ShopDeleteVO;
 import com.spring.domain.ShopVO;
+import com.spring.domain.item_lankVO;
 import com.spring.mapper.MenuMapper;
 
 @Service
@@ -35,6 +38,22 @@ public class MenuServiceImpl implements MenuService {
 	public void add_order_recode_detail(OrderRecodeVO recode) {
 		mapper.add_order_recode_detail(recode);
 		
+	}
+
+	@Override
+	public List<item_lankVO> recommend_menu_count(ItemNumberVO num) {
+		return mapper.recommend_menu_count(num);
+	}
+
+
+
+	@Override
+	public List<ItemVO> recommend_item_selectAll(int[] lank_num) {
+		
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("lank_num", lank_num);
+		
+		return mapper.recommend_item_selectAll(map);
 	}
 
 	@Override

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.shop_item_left{
+	float:left;
+	padding:0 5px;
+}
+
+.shop_box{
+	margin:10px 0;
+	border-bottom:1px solid #eee;
+	padding-bottom:10px;
+}
+.shop_item_header{
+	margin-bottom:10px;
+}
+
+.shop_item_quantity{
+	width:5%;
+	font-size: 1.5rem;
+	text-align: center;
+
+}
+.shop_item_number{
+	width:23%;
+
+}
+
+.shop_item_number img{
+	max-width: 100%;
+
+}
+.shop_item_name{
+	font-size: 0.875rem;
+	width: 60%;
+}
+.shop_item_modify{
+	width:40%;
+	text-align: center;
+}
+.shop_item_price{
+	float:right;
+	font-size: 1.25rem;
+    color: #44900c;
+
+}

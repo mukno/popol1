@@ -79,22 +79,10 @@
 							
 							<div class="login_body">
 								<form action="/menu/menu_recommend">
-									<!-- <div class="login_box" style="margin-top:15px;margin-bottom:15px;">
-										<input style="background-color:white;" type="text" value="${loginUser.userAdd }" disabled/>
-										<select>
-											<c:forEach var="addr" items="${address_List }">
-												<option>${addr.useradd }</option>
-											
-											</c:forEach>
-										
-										</select>
-									
-									</div>
-									 -->
 									<div class="select-box select-script">
 									    <label for="selectbox">${loginUser.userAdd }</label>
 									    <select id="selectbox">
-									        <option selected="selected">${loginUser.userAdd }</option>
+									        <option selected="selected" >${loginUser.userAdd }</option>
 									        <c:forEach var="addr" items="${address_List }">
 												<option>${addr.useradd }</option>
 											

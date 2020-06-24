@@ -29,6 +29,7 @@ import com.spring.domain.MemberVO;
 import com.spring.domain.OrderRecodeVO;
 import com.spring.domain.ShopDeleteVO;
 import com.spring.domain.ShopVO;
+import com.spring.domain.item_lankVO;
 import com.spring.interceptor.SessionNames;
 import com.spring.service.MenuService;
 
@@ -47,12 +48,27 @@ public class MenuController {
 						 	   ,HttpSession session) {
 		//menu.js mouserover이벤트
 		model.addAttribute("menu_num","0");
+		 
+		int start_lank=1;//ex)1 = 인기순위 1위
+		int last_lank=10;//ex)5 = 인기순위 10위
 		
-		//menu_main.jsp items
 		ItemNumberVO num = new ItemNumberVO();
-		num.setStart_Num(1);
-		num.setEnd_Num(19);
-		List<ItemVO> items=service.menu_selectAll(num);
+		num.setStart_Num(start_lank);
+		num.setEnd_Num(last_lank);
+		List<item_lankVO> lankVO=service.recommend_menu_count(num);
+		
+		int lank_num[] = new int[last_lank];
+		int i=0;
+		for (item_lankVO lank : lankVO) {
+			lank_num[i]=lank.getItem_number();
+			i++;
+		}
+		
+		List<ItemVO> items=service.recommend_item_selectAll(lank_num);
+	
+		
+		
+		
 		model.addAttribute("items",items);
 		
 		//order_list.jsp 장바구니 리스트 정보
@@ -166,13 +182,18 @@ public class MenuController {
 
 		ItemVO item=service.item_selectOne(item_number);
 		int item_tot_price=0;
+		String item_name=item.getItem_Name();
 		
 		if(item_set_amount>0) {
-			item_tot_price=item_amount*item.getItem_Set_Price();
-			shop_add_Action(userId,item_number,item_set_amount,item_tot_price,item);
+			item_tot_price=item_set_amount*item.getItem_Set_Price();
+			item_name="세트 - "+item_name;
+			shop_add_Action(userId,item_number,item_set_amount,item_tot_price,item_name,item);
 		}
-		item_tot_price=item_amount*item.getItem_Price();
-		shop_add_Action(userId,item_number,item_amount,item_tot_price,item);
+		if(item_amount>0) {
+			item_name="단품 - "+item.getItem_Name();
+			item_tot_price=item_amount*item.getItem_Price();
+			shop_add_Action(userId,item_number,item_amount,item_tot_price,item_name,item);
+		}
 		
 		
 	
@@ -183,6 +204,7 @@ public class MenuController {
 								,int item_number
 								,int item_amount
 								,int item_tot_price
+								,String item_name
 								,ItemVO item) {
 		
 		List<ShopVO> shops=service.selectAll_shop(userId);
@@ -192,7 +214,7 @@ public class MenuController {
 		
 		ShopVO shop=new ShopVO();
 		shop.setItem_amount(item_amount);
-		shop.setItem_name(item.getItem_Name());
+		shop.setItem_name(item_name);
 		shop.setItem_number(item_number);
 		shop.setItem_price(item_tot_price);
 		shop.setUserId(userId);

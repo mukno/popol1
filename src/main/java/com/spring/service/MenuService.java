@@ -9,6 +9,7 @@ import com.spring.domain.ItemVO;
 import com.spring.domain.OrderRecodeVO;
 import com.spring.domain.ShopDeleteVO;
 import com.spring.domain.ShopVO;
+import com.spring.domain.item_lankVO;
 
 
 public interface MenuService {
@@ -28,5 +29,8 @@ public interface MenuService {
 	public int select_shop_order_count(String userId);
 	public void copy_order_recode(String userId);
 	public void add_order_recode_detail(OrderRecodeVO recode);
+	
+	public List<item_lankVO> recommend_menu_count(ItemNumberVO num);
+	public List<ItemVO> recommend_item_selectAll(int[] lank_num);
 	
 }

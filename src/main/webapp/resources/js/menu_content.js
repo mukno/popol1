@@ -16,6 +16,7 @@ function Do_add(num){
 			//actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 				$(".item_img").find("img").attr("src","../img/"+data.item_Num+".png");
 				$(".img-colum").find("img").attr("src","../img/"+data.item_Num+".png");
+				$(".item_header_padding").find(".inner_text").html(data.item_Name);
 				$(".item_number").attr("value",data.item_Num);
 				
 				
@@ -222,7 +223,6 @@ function pay_go(){
 	
 	$(".pay").css("display","block");
 
-	
 	$("body").addClass("sign_body");
 	
 	var deliver_address=$(".deliver_addr").find(".content").text();
@@ -236,7 +236,6 @@ function pay_go(){
 		data:"order_time="+order_time+"&deliver_time="+deliver_time+"&deliver_address="+deliver_address,
 		success:function(data){
 		
-
 			
 			
 		}
@@ -306,8 +305,10 @@ function pay_exit(){
 
 	$(".pay").css("display","none");
 	$("body").removeClass("sign_body");
+
+	var uri=$("#uri").val();
 	
-	location.href="/menu/menu_hamburger";
+	location.href=uri;
 	
 }
 

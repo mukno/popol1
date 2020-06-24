@@ -9,6 +9,56 @@
 	     from item_list
 		 where item_num BETWEEN #{start_Num} and #{end_Num}
 	</select>
+	
+	<select id="recommend_menu_count" resultType="com.spring.domain.item_lankVO">
+		select
+		 rn as lank
+		 ,item_number
+		 ,su as buy_count 
+		 from(
+			select
+			 rownum as rn
+			 ,item_number
+			 ,su 
+			 from(
+			 	select
+			 	 item_number
+			 	 ,sum(item_amount) as su 
+			 	 from order_recode 
+			 	 group by item_number 
+			 	 order by su desc
+			 	 )
+			 )
+		  where rn BETWEEN #{start_Num} and #{end_Num}
+	
+	</select>
+	
+	<select id="recommend_item_selectAll" resultType="com.spring.domain.ItemVO" parameterType="map">
+		select
+		 *from item_list 
+		 where <include refid="commend_item_num"></include>
+	
+	</select>
+	
+	<sql id="commend_item_num">
+		<trim prefixOverrides="OR" suffix="ORDER BY CASE">
+			<foreach collection="lank_num" item="num">
+				<trim prefix="OR">
+					item_num=#{num}		
+				</trim>
+			</foreach>
+		</trim>
+		<trim suffix="end">
+			<foreach collection="lank_num" item="num" index="index">
+				<trim prefix="when">
+					item_num=#{num} then #{index} 	
+				</trim>
+			</foreach>
+		</trim>
+		
+	
+	</sql>
+	
 
 	<select id="item_selectOne" resultType="com.spring.domain.ItemVO">
 		select *

@@ -489,6 +489,7 @@ a{
 
 .select-script{
 	position:relative;
+	width:259px;
 	height:40px; 
 	line-height:40px; 
 	border:1px solid #606976; 
@@ -496,18 +497,21 @@ a{
 	text-transform:uppercase; 
 	background:#fff;
 }
+
 .select-script label{
 	position:absolute; 
-	width:91%; 
-	font-size:.86em; 
+	width:90%; 
+	height:100px;
 	color:#606976; 
 	top:0; 
 	left:0; 
 	padding:0 5%;
+	font-size: 13px;
+	line-height: 18px;
 }
 .select-script label:after{
 	content:'▼'; 
-	width:40px; 
+	width:13px; 
 	height:40px; 
 	position:absolute; 
 	top:0; 
