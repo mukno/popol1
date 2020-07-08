@@ -56,7 +56,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 								<p>주소 정보</p>
 								<form name="form" id="form" method="post">
 									
-									<div id="list"></div>
 									<div id="callBackDiv">
 										<table>
 											<tr><td>우편번호</td><td><input type="text"  style="width:300px;" id="zipNo"  name="zipNo" />  <input type="button" onClick="goPopup();" value="주소 찾기"/><br><h3 class="zipNo_check"></h3></td></tr>

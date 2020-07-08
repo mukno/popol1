@@ -17,15 +17,22 @@
 		 values(
 		 #{userId}
 		 ,#{useradd}
-		 ,#{add_num})
-	
+		 ,#{add_num}
+		 )
 	</insert>
 	
-	<select id="select_add_num" resultType="int">
+	<select id="max_add_num" resultType="int">
 		select 
 		 max(add_num)
 		 from member_address
 		 where userId=#{userId}
+	</select>
+	
+	<select id="select_add_num" resultType="int">
+		select 
+		 add_num
+		 from member_address
+		 where userId=#{userId} and userAdd=#{userAdd}
 	</select>
 	
 	<delete id="delete_address">

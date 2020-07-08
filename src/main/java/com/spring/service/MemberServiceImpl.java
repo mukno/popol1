@@ -2,6 +2,7 @@ package com.spring.service;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.spring.domain.MemberVO;
@@ -24,8 +25,22 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public int change_addr(String useradd, String userId) {
-		return mapper.change_addr(useradd, userId);
+	public int userIdCheck(String userId) {
+		return mapper.userIdCheck(userId);
+	}
+
+
+
+	@Override
+	public int registerMember(MemberVO vo) {
+		return mapper.registerMember(vo);
+	}
+
+
+
+	@Override
+	public int change_addr(String useradd, String userId,int delete_check) {
+		return mapper.change_addr(useradd, userId,delete_check);
 	}
 
 
@@ -33,6 +48,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO member_login(MemberVO vo) {
 		return mapper.member_login(vo);
+	}
+
+
+
+	@Override
+	public void registerAddress(MemberVO vo) {
+		mapper.registerAddress(vo);
 	}
 
 

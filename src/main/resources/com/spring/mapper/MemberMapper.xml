@@ -26,9 +26,46 @@
 	<update id="change_addr">
 		update
 		 member_list 
-		 set useradd=#{useradd} 
+		 set
+		 <choose>
+		 	<when test="delete_check == 0">
+		 		useradd=#{useradd} 
+		 	</when>
+		 	<otherwise>
+				useradd=(
+				select
+				 useradd 
+				 from member_address 
+				 where add_num=(
+				 select
+				  min(add_num) 
+				  from member_address 
+				  where userId=#{userId}
+				  )
+				  )						 	
+		 	</otherwise>
+		 
+		 </choose> 
 		 where userId=#{userId} 
 	</update>
+	
+	<select id="userIdCheck" resultType="int">
+		select
+		 count(*) 
+		 from member_list 
+		 where userId= #{userId}
+	</select>
+	
+	<insert id="registerMember">
+		insert into member_list(userId,userPw,userAdd,userName) values(#{userId},#{userPw},#{userAdd},#{userName})
+	
+	</insert>
+	
+	<insert id="registerAddress">
+	
+		insert into member_address values(#{userId},#{userAdd},1)
+	
+	</insert>
 	
 	
 

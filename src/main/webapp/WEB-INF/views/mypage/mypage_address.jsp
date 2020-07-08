@@ -34,14 +34,17 @@
 									<tr>
 										<td class="address_num">${status.index+1}</td>
 										<td class="address_name">${address.useradd }</td>
-										<td class="address_delete"><a href="/mypage/delete_addr/${address.add_num}"><i class="fas fa-trash-alt"></i></a></td>
-										
+										<td class="address_delete">
+										<c:if test="${address_count >1 }">
+										<a href="/mypage/delete_addr/${address.add_num}"><i class="fas fa-trash-alt"></i></a>
+										</c:if>
+										</td>
 									</tr>
 									<input type="hidden" id="address_num" value="${address.add_num}"/>
-								</c:forEach>
+								</c:forEach> 
 									<tr>
 										<td class="go_add_address" colspan="3">
-											<div class="address_button"><a href="/mypage/mypage_add_address">새로운 주소 추가</a></div>
+											<a class="address_button" href="/mypage/mypage_add_address">새로운 주소 추가</a>
 										</td>
 									</tr>
 								</table>

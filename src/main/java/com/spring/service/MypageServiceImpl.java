@@ -26,8 +26,13 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public int select_add_num(String userId) {
-		return mapper.select_add_num(userId);
+	public int select_add_num(String userId, String userAdd) {
+		return mapper.select_add_num(userId, userAdd);
+	}
+
+	@Override
+	public int max_add_num(String userId) {
+		return mapper.max_add_num(userId);
 	}
 
 	@Override

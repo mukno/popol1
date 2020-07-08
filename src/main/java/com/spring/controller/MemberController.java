@@ -52,6 +52,7 @@ public class MemberController {
 			System.out.println("Get home");
 			MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
 			String userId=vo.getUserId();
+			
 			if(userId!=null) {
 				List<AddressVO> address_List=mypage_service.address_selectAll(userId);
 				model.addAttribute("address_List",address_List);
@@ -63,6 +64,13 @@ public class MemberController {
 			
 		}
 		
+		
+		
+		
+	}
+	
+	@GetMapping("/register")
+	public void register() {
 		
 		
 		
@@ -88,8 +96,8 @@ public class MemberController {
 				uri="/home";
 			}else {
 				uri=basicURL.substring(14,basicURL.length()-4);
-				
 			}
+			
 			MemberVO user=service.member_login(vo);
 			if(user!=null) {
 				
@@ -197,7 +205,7 @@ public class MemberController {
 		MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
 		String userId=vo.getUserId();
 		
-		int result=service.change_addr(useradd, userId);
+		int result=service.change_addr(useradd, userId,0);
 		if(result==1) {
 			MemberVO user=service.select_member(userId);
 			session.setAttribute(SessionNames.LOGIN, user);
@@ -210,6 +218,35 @@ public class MemberController {
 		
 		
 	}
+	
+	@GetMapping("/userIdCheck")
+	public @ResponseBody int userIdCheck(@RequestParam("userId")String userId) {
+		
+		int result=service.userIdCheck(userId);
+		
+		return result;
+	}
+	
+	@PostMapping("/register")
+	public String register(MemberVO vo) {
+		
+		int result=service.registerMember(vo);
+		
+		if(result==1) {
+			//林家废俊 林家 眠啊
+			service.registerAddress(vo);
+			
+			return "redirect:/home";
+		}else {
+			
+			return "redirect:/register";
+		}
+		
+		
+		
+	}
+	
+	
 	
 
 }

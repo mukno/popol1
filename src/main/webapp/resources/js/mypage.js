@@ -87,7 +87,6 @@ function change_userPw(){
 function password_check(pwd){
 	var regPwd=/(?=.*[A-Za-z])(?=.*\d).{6,12}$/;
 	if(!regPwd.test(pwd)){
-		console.log("222");
 		return true;
 	}
 	

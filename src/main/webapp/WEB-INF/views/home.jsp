@@ -58,7 +58,7 @@
 								<p class="result">${loginResult }</p>
 								<div class="login_etc">
 									<button type="submit" style="cursor:pointer;">로그인</button>
-									<p class="etc_pwd"><a href="">회원가입</a></p>
+									<p class="etc_pwd"><a href="/register">회원가입</a></p>
 									<p><a href="">신규 회원<br>주문하기</a></p>
 									
 								</div>

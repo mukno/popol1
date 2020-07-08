@@ -49,8 +49,8 @@ public class MenuController {
 		//menu.js mouserover이벤트
 		model.addAttribute("menu_num","0");
 		 
-		int start_lank=1;//ex)1 = 인기순위 1위
-		int last_lank=10;//ex)5 = 인기순위 10위
+		int start_lank=1;//ex)1 = 제일 많이 팔린 인기순위 1위 부터
+		int last_lank=10;//ex)10 = 10위 까지 목록 보여줌
 		
 		ItemNumberVO num = new ItemNumberVO();
 		num.setStart_Num(start_lank);
@@ -66,9 +66,6 @@ public class MenuController {
 		
 		List<ItemVO> items=service.recommend_item_selectAll(lank_num);
 	
-		
-		
-		
 		model.addAttribute("items",items);
 		
 		//order_list.jsp 장바구니 리스트 정보

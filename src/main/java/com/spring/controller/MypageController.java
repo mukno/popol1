@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.spring.domain.MemberVO;
 import com.spring.domain.OrderRecodeVO;
 import com.spring.domain.ShopVO;
 import com.spring.interceptor.SessionNames;
+import com.spring.service.MemberService;
 import com.spring.service.MenuService;
 import com.spring.service.MypageService;
 
@@ -30,6 +32,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/mypage/*")
 public class MypageController {
+	
+	@Inject
+	private MemberService service;
 	
 	@Inject
 	private MenuService menu_service;
@@ -107,8 +112,14 @@ public class MypageController {
 		String userId=vo.getUserId();
 		
 		List<AddressVO> address=mypage_service.address_selectAll(userId);
+		int a=0;
+		for (AddressVO addressVO : address) {
+			a++;
+			
+			
+		}
 		model.addAttribute("address",address);
-		System.out.println("12412412 "+address);
+		model.addAttribute("address_count",a);
 		
 	}
 
@@ -135,7 +146,7 @@ public class MypageController {
 			addvo.setUseradd(address);
 			addvo.setAdd_num(add_num+1);
 		}else {
-			add_num=mypage_service.select_add_num(userId);
+			add_num=mypage_service.max_add_num(userId);
 
 			addvo.setUserId(userId);
 			addvo.setUseradd(address);
@@ -152,12 +163,29 @@ public class MypageController {
 							  ,HttpSession session) {
 		MemberVO vo=(MemberVO)session.getAttribute(SessionNames.LOGIN);
 		String userId=vo.getUserId();
+		String userAdd=vo.getUserAdd();
+		
+		//지금 session 유저정보의 주소 넘버구하기
+		int add_num=mypage_service.select_add_num(userId,userAdd);
 		
 		AddressVO addvo=new AddressVO();
 		addvo.setUserId(userId);
 		addvo.setAdd_num(num);
-		
+		//주소 삭제
 		mypage_service.delete_address(addvo);
+		
+		System.out.println("Add_num:::"+add_num);
+		System.out.println("num:::"+num);
+		//삭제한 주소와 지금 현재 주소가 같으면 add_num이 1번인 주소로 변경
+		if(add_num==num) {
+			service.change_addr("error", userId, 1);
+			MemberVO user=service.select_member(userId);
+			session.setAttribute(SessionNames.LOGIN, user);
+			
+		}
+		
+		
+		
 		
 		
 		

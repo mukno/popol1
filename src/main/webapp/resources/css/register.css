@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+body{
+	background-color: #f3f3f3;
+	
+}
+.wrapper{
+}
+
+.container{
+	padding:100px 500px 100px 500px;
+}
+.container_wrapper{
+	background-color: white;
+	padding:50px 100px 50px 100px;
+	
+}
+.header{
+	text-align: center;
+	margin-bottom: 40px;
+}
+.mark{
+	display:inline-block;
+	text-align: center;
+	width:110px;
+	background-color: red;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.mark img{
+
+
+	
+}
