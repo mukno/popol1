@@ -49,7 +49,7 @@
 
 function init(){
 	var url = location.href;
-	var confmKey = "devU01TX0FVVEgyMDIwMDQyMDE4MDYxNDEwOTY4NjA=";
+	var confmKey = "devU01TX0FVVEgyMDIwMDgxNzE5MjUyNjExMDA3MjI=";
 	var resultType = "4"; // 도로명주소 검색결과 화면 출력내용, 1 : 도로명, 2 : 도로명+지번, 3 : 도로명+상세건물명, 4 : 도로명+지번+상세건물명
 	var inputYn= "<%=inputYn%>";
 	console.log("11"+inputYn);
