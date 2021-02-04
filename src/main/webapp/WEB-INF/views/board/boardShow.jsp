@@ -62,6 +62,7 @@
 					</table>
 				</form>
 				
+				
 				<form id="boardShow_form">
 						<input type="hidden" id="comment_board" value="${vo.bno }">
 						<input type="hidden" id="last_comment_num" value="${last_comment_num }">

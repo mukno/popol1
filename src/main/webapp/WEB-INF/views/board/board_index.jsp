@@ -65,7 +65,7 @@
 									</c:when>
 									<c:otherwise>
 										<li>
-											<a><i class="fas fa-angle-double-left"></i> 이전</a>
+											<p><i class="fas fa-angle-double-left"></i> 이전</a>
 										</li>
 									</c:otherwise>
 								</c:choose>
@@ -91,7 +91,7 @@
 									</c:when>
 									<c:otherwise>
 										<li>
-											<a>다음 <i class="fas fa-angle-double-right"></i></a> 
+											<p>다음 <i class="fas fa-angle-double-right"></i></p> 
 										</li>
 									</c:otherwise>
 								</c:choose>

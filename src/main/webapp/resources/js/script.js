@@ -19,6 +19,13 @@ function register_go(){
 		return false;
 	}
 	
+	if(password.val()==""||password.val()==null){
+		register_alert.find("p").html("비밀번호를 입력하세요.");
+		register_alert.css("display","block");
+		password.focus();
+		return false;
+	}
+	
 	$.ajax({
 		url:"/userIdCheck",
 		data:"userId="+first_name.val(),
@@ -29,50 +36,52 @@ function register_go(){
 				register_alert.css("display","block");
 				first_name.focus();
 				
-				}else{
+			}else if(change_userPw()){
 					
-					if(change_userPw()){
+				//유효성 검사
+					
+					if(last_name.val()==""||last_name.val()==null){
+						register_alert.find("p").html("닉네임을 입력하세요.");
+						register_alert.css("display","block");
+						last_name.focus();
+						return false;
+					}
+					if(roadAddrPart1.val()==""||roadAddrPart1.val()==null){
+						register_alert.find("p").html("주소를 입력하세요.");
+						register_alert.css("display","block");
+						roadAddrPart1.focus();
+						return false;
+					}
+					if(addrDetail.val()==""||addrDetail.val()==null){
+						register_alert.find("p").html("상세 주소를 입력하세요.");
+						register_alert.css("display","block");
+						addrDetail.focus();
+						return false;
+						
+					}
 
+					
 						var userAdd=roadAddrPart1.val()+" "+addrDetail.val();
 						$("#userAdd").attr("value",userAdd);
+						
 						$("#register").action="/register";
 						$("#register").submit();
-					}
+						
+					
+					
+					
 				}
+			}
 			
-			}				
+						
 		
 	})
 		
-	if(password.val()==""||password.val()==null){
-		register_alert.find("p").html("비밀번호를 입력하세요.");
-		register_alert.css("display","block");
-		password.focus();
-		return false;
-	}
-	if(last_name.val()==""||last_name.val()==null){
-		register_alert.find("p").html("닉네임을 입력하세요.");
-		register_alert.css("display","block");
-		last_name.focus();
-		return false;
-	}
-	if(roadAddrPart1.val()==""||roadAddrPart1.val()==null){
-		register_alert.find("p").html("주소를 입력하세요.");
-		register_alert.css("display","block");
-		roadAddrPart1.focus();
-		return false;
-	}
-	if(addrDetail.val()==""||addrDetail.val()==null){
-		register_alert.find("p").html("상세 주소를 입력하세요.");
-		register_alert.css("display","block");
-		addrDetail.focus();
-		return false;
-	}
 	
 	
 	
+	}
 	
-}
 
 function change_userPw(){
 	var password=$("#password");

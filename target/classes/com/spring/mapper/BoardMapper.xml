@@ -58,7 +58,7 @@
 		 ,writer
 		 ,TO_CHAR(updatedate, 'RRRR-MM-DD HH24:MI') as updatedate
 		 ,hits
-		 ,replyCnt
+		 ,replyCntwwww
 		 ,board_content
 		 ,board_group
 		 ,userId 

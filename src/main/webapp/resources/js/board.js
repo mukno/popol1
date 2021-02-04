@@ -15,6 +15,7 @@ function board_delete(bno){
 }
 
 
+
 var actionForm=$("#actionForm");
 $(".paging a").click(function(e){
 	e.preventDefault();

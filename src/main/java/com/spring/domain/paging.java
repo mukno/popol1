@@ -1,5 +1,6 @@
 package com.spring.domain;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import lombok.Data;
 
 @Data
@@ -33,6 +34,10 @@ public class paging {
 		
 		prev=startPage>1;//start페이지가 1이면 prev가 false
 		next=endPage<totalPage;//endPage가 totalPage와 같으면 false
+		
+		
+		
+		
 		
 	}
 
