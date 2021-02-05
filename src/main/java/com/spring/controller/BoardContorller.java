@@ -37,7 +37,8 @@ public class BoardContorller {
 	
 	@GetMapping("/board_index")
 	public void board_index(Model model
-							,@RequestParam(defaultValue="1")int pageNum
+					
+			,@RequestParam(defaultValue="1")int pageNum
 							,@RequestParam(defaultValue="")String keyword
 							,@RequestParam(defaultValue="1")String type) {
 			String nowTime=service.nowTime();
@@ -92,6 +93,10 @@ public class BoardContorller {
 		bvo.setTitle(title);
 		bvo.setWriter(userName);
 		bvo.setUserId(userId);
+		
+		//첫게시판작성 분리 확인용
+		
+		
 		
 	
 		int result = service.writeAction(bvo);

@@ -340,6 +340,7 @@ a{
 .footer{
 	margin-top:40px;
 	min-width:1200px;
+	bottom:0;
 	
 }
 

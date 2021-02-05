@@ -8,6 +8,7 @@ function writeCnt(comment_parent){
 	
 	var sendData = JSON.stringify({comment_board:comment_board, comment_content:comment_content,comment_parent:comment_parent}); 
 
+	
 
 	
 	$.ajax({

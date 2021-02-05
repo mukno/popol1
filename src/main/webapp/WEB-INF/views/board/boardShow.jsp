@@ -150,7 +150,7 @@
 							</td>
 							<td>
 								<div>
-									<textarea maxlength="256" id="comment_content" style="width: 99%; height:70px;"></textarea>
+									<textarea  maxlength="256" id="comment_content" style="width: 99%; height:70px;"></textarea>
 								</div>
 							</td>
 							<td width="150">
@@ -170,8 +170,8 @@
 								</div>
 							</td>
 							<td>
-								<div>
-									<textarea onclick="login_go()" maxlength="256" id="comment_content" style="width: 99%; height:70px;"></textarea>
+								<div onclick="login_go()">
+									<textarea maxlength="256" id="comment_content" style="background-color:white;width: 99%; height:70px;" disabled></textarea>
 								</div>
 							</td>
 							<td width="150">

@@ -145,7 +145,7 @@ var $slideWrap=$(".slide_wrap"),
 	function login_go(){
 		var sign_form=$("#sign_form");
 		
-
+		sign_form.find("input[name=userId]").focus();
 		sign_form.find("input[name=userId]").val("");
 		sign_form.find("input[name=userPw]").val("");
 		sign_form.find(".result").html("");
